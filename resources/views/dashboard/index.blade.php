@@ -36,7 +36,6 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
               <img src="{{asset('admin')}}/images/faces/face5.jpg" alt="profile"/>
-              <span class="nav-profile-name">Pengguna</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -63,7 +62,7 @@
           <li class="nav-item">
             <a class="nav-link" href="documentation/documentation.html">
               <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-              <span class="menu-title">Documentation</span>
+              <span class="menu-title">Profil</span>
             </a>
           </li>
         </ul>
