@@ -74,7 +74,7 @@
             <div class="col-md-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Recent Purchases</p>
+                  <p class="card-title">List CV</p>
                   <div class="table-responsive">
 
                   </div>
@@ -87,8 +87,8 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
         <div class="d-sm-flex justify-content-center justify-content-sm-between">
-          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <a href="https://www.bootstrapdash.com/" target="_blank">bootstrapdash.com </a>2021</span>
-          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Only the best <a href="https://www.bootstrapdash.com/" target="_blank"> Bootstrap dashboard  </a> templates</span>
+          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"> </a>Kelompok WP7</span>
+          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></a> Web Profile </span>
         </div>
         </footer>
         <!-- partial -->
