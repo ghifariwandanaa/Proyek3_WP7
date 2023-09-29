@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\halamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.index');
-});
+Route::redirect('home','dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-});
+Route::prefix('dashboard')->group(
+    function(){
+        Route::get('/',function(){
+            return view ('dashboard.layout');
+        });
+        Route::resource('halaman', 'App\Http\Controllers\halamanController');
+
+    }
+);
+
 

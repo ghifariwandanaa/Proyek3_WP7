@@ -62,7 +62,7 @@
           <li class="nav-item">
             <a class="nav-link" href="documentation/documentation.html">
               <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-              <span class="menu-title">Profil</span>
+              <span class="menu-title">Documentation</span>
             </a>
           </li>
         </ul>
@@ -74,10 +74,7 @@
             <div class="col-md-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">List CV</p>
-                  <div class="table-responsive">
-
-                  </div>
+                  @yield('konten')
                 </div>
               </div>
             </div>
