@@ -18,11 +18,8 @@ Route::redirect('home','dashboard');
 
 Route::prefix('dashboard')->group(
     function(){
-        Route::get('/',function(){
-            return view ('dashboard.layout');
-        });
-        Route::resource('halaman', 'App\Http\Controllers\halamanController');
-
+        Route::get('/',[halamanController::class,'index']);
+        Route::resource('halaman',halamanController::class);
     }
 );
 

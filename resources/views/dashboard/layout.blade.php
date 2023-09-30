@@ -60,9 +60,9 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="documentation/documentation.html">
+            <a class="nav-link" href="{{route('halaman.index')}}">
               <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-              <span class="menu-title">Documentation</span>
+              <span class="menu-title">Edit Profil</span>
             </a>
           </li>
         </ul>
