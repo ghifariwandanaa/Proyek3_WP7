@@ -5,6 +5,7 @@
         class="btn btn-secondary"> Kembali</a>
     </div>
     <form action="{{route('halaman.store')}}"method="post">
+        @csrf
         <div class="mb-3">
           <label for="nama" class="form-label">Nama</label>
           <input type="text"class="form-control form-control sm" 
@@ -36,8 +37,8 @@
           name="keahlian" id="keahlian" aria-describedby="helpId" placeholder="Keahlian">
         </div>
            <div class="mb-3">
-            <label for="datadiri" class="form-label">Deskripsi Diri</label>
-            <textarea class="form-control" rows="5" name="datadiri"></textarea>
+            <label for="dataDiri" class="form-label">Deskripsi Diri</label>
+            <textarea class="form-control" rows="5" name="dataDiri"></textarea>
         </div>
         <button class="btn btn-primary" name="simpan" type="submit">SIMPAN</button>
     </form>

@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('halaman', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->text('isi');
+            $table->string('nama');
+            $table->string('alamat');
+            $table->string('kontak');
+            $table->string('riwayatPendidikan');
+            $table->string('riwayatPekerjaan');
+            $table->string('keahlian');
+            $table->text('dataDiri');
+
             $table->timestamps();
         });
     }

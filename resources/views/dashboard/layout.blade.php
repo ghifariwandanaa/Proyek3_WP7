@@ -70,6 +70,14 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $item)
+                  <li>{{$item}}</li>                      
+                  @endforeach
+              </div>
+          @endif
           <div class="row">
             <div class="col-md-12 stretch-card">
               <div class="card">

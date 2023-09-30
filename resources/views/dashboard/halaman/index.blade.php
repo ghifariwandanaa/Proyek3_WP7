@@ -11,13 +11,20 @@
             <th class="col-2">Aksi</th>
         </thead>
         <tbody>
+            <?php $i=1;?>
+            @foreach ($data as $item)
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{$i}}</td>
+                <td>{{$item->nama}}</td>
+                <td>
+                    <a href='' class="btn btn-sm btn-secondary">Edit</a>
+                    <a href='' class="btn btn-sm btn-danger">Del</a>
+                </td>
             </tr>
+            <?php $i++;?>
+            @endforeach
+           
         </tbody>
     </table>
-
 </div>
 @endsection
