@@ -18,7 +18,15 @@
                 <td>{{$item->nama}}</td>
                 <td>
                     <a href='' class="btn btn-sm btn-secondary">Edit</a>
-                    <a href='' class="btn btn-sm btn-danger">Del</a>
+                    <form onsubmit="return confirm('Yakin ingin menghapus data ini?')
+                    "
+                        action="{{ route('halaman.destroy', $item->id)}}"
+                        class="d-inline" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-sm btn-danger" type="submit"
+                        name='submit'>Del</button>
+                    </form>
                 </td>
             </tr>
             <?php $i++;?>
