@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\halamanController;
 use App\Http\Controllers\DepanController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +29,10 @@ Route::prefix('dashboard')->group(
         Route::resource('halaman',halamanController::class);
     }
 );
+
+Route::get('/halaman/{id}/edit', [HalamanController::class, 'edit'])->name('halaman.edit');
+Route::put('/halaman/{id}', [HalamanController::class, 'update'])->name('halaman.update');
+
 
 
 

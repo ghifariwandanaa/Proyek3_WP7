@@ -17,7 +17,7 @@
                 <td>{{$i}}</td>
                 <td>{{$item->nama}}</td>
                 <td>
-                    <a href='' class="btn btn-sm btn-secondary">Edit</a>
+                    <a href="{{ route('halaman.edit', $item->id) }}" class="btn btn-sm btn-secondary">Edit</a>
                     <form onsubmit="return confirm('Yakin ingin menghapus data ini?')
                     "
                         action="{{ route('halaman.destroy', $item->id)}}"

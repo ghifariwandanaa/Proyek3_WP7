@@ -77,7 +77,14 @@ class halamanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $halaman = halaman::find($id);
+    
+        if (!$halaman) {
+            // Redirect ke halaman indeks jika data tidak ditemukan
+            return redirect()->route('halaman.index')->with('error', 'Data tidak ditemukan');
+        }
+    
+        return view('dashboard.halaman.edit')->with('halaman', $halaman);
     }
 
     /**
@@ -85,7 +92,25 @@ class halamanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'kontak' => 'required',
+            'riwayatPendidikan' => 'required',
+            'riwayatPekerjaan' => 'required',
+            'keahlian' => 'required',
+            'dataDiri' => 'required',
+        ]);
+
+        $halaman = Halaman::find($id);
+
+        if (!$halaman) {
+            return redirect()->route('halaman.index')->with('error', 'Data tidak ditemukan');
+        }
+
+        $halaman->update($request->all());
+
+        return redirect()->route('halaman.index')->with('success', 'Data berhasil diperbarui');
     }
 
     /**
