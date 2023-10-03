@@ -1,0 +1,77 @@
+/* Reset CSS untuk menghilangkan margin dan padding default */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style untuk container utama */
+  .about-container {
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  /* Style untuk konten */
+  .about-content {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Style untuk judul */
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333; /* Warna judul */
+  }
+  
+  /* Style untuk tombol */
+  #toggleButton {
+    background-color: #007bff; /* Warna latar tombol */
+    color: #fff; /* Warna teks tombol */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style untuk detail informasi */
+  .about-details {
+    text-align: left;
+    font-size: 16px;
+    color: #333; /* Warna teks detail */
+  }
+  
+  /* Style untuk tautan navigasi */
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  /* Style untuk footer (bagian bawah halaman) */
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  /* Style untuk tautan navigasi di header */
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  /* Style untuk tautan navigasi aktif (yang sedang dilihat) */
+  nav ul li a:hover {
+    color: #007bff;
+  }
+  

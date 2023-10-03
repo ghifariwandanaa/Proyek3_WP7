@@ -64,6 +64,10 @@
               <i class="mdi mdi-file-document-box-outline menu-icon"></i>
               <span class="menu-title">Edit Profil</span>
             </a>
+            <a class="nav-link" href="{{route('halaman.index')}}">
+              <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+              <span class="menu-title">Data Profile</span>
+            </a>
           </li>
         </ul>
       </nav>

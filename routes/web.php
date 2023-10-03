@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\halamanController;
+use App\Http\Controllers\DepanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,12 @@ use App\Http\Controllers\halamanController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// routes/web.php
+
+Route::get('/about', [DepanController::class, 'about'])->name('about');
 
 Route::redirect('home','dashboard');
+
 
 Route::prefix('dashboard')->group(
     function(){
@@ -22,5 +27,6 @@ Route::prefix('dashboard')->group(
         Route::resource('halaman',halamanController::class);
     }
 );
+
 
 
