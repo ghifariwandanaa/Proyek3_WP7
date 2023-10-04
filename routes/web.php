@@ -22,7 +22,7 @@ Route::get('/about', [DepanController::class, 'about'])->name('about');
 Route::redirect('home','dashboard');
 
 
-Route::prefix('dashboard')->group(
+Route::prefix('/')->group(
     function(){
         Route::get('/',[halamanController::class,'index']);
         Route::resource('halaman',halamanController::class);
