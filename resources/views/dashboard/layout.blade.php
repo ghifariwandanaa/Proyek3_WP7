@@ -60,15 +60,15 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{route('halaman.index')}}">
-              <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-              <span class="menu-title">Edit Profil</span>
-            </a>
-          </li>            
-            <li class="nav-item">
             <a class="nav-link" href="{{route('depan.index')}}">
               <i class="mdi mdi-file-document-box-outline menu-icon"></i>
               <span class="menu-title">Data Profile</span>
+            </a>
+          </li>            
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('halaman.index')}}">
+              <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+              <span class="menu-title">Edit Profil</span>
             </a>
           </li>
         </ul>
