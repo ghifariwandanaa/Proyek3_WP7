@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Resume - Start Bootstrap Theme</title>
+    <title>About me</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -17,7 +17,6 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('depan') }}/css/about.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-
 </head>
 
 <body id="page-top">
@@ -49,7 +48,22 @@
                 <p><strong>Alamat:</strong> {{ $data->alamat }}</p>
                 <p><strong>Kontak:</strong> {{ $data->kontak }}</p>
                 <p><strong>Riwayat Pendidikan:</strong> {{ $data->riwayatPendidikan }}</p>
-                <p><strong>Riwayat Pekerjaan:</strong> {{ $data->riwayatPekerjaan }}</p>
+                <p><strong>Riwayat Pekerjaan:</strong></p>
+                <ul>
+                    @if ($data->riwayatPekerjaan)
+                        @foreach ($data->riwayatPekerjaan as $pekerjaan)
+                            <li>
+                                    <strong>Tanggal Mulai:</strong> {{ $pekerjaan['tgl_mulai'] }}<br>
+                                    <strong>Tanggal Akhir:</strong> {{ $pekerjaan['tgl_akhir'] }}<br>
+                                    <strong>Info 1:</strong> {{ $pekerjaan['info1'] }}<br>
+                                    <strong>Info 2:</strong> {{ $pekerjaan['info2'] }}<br>
+                                    <strong>Info 3:</strong> {{ $pekerjaan['info3'] }}<br>
+                            </li>
+                        @endforeach
+                    @else
+                        <li>Tidak ada riwayat pekerjaan yang tersedia.</li>
+                    @endif
+                </ul>
                 <p><strong>Keahlian:</strong> {{ $data->keahlian }}</p>
                 <p><strong>Data Diri:</strong> {{ $data->dataDiri }}</p>
                 <button id="download-cv-button">Download CV</button>
