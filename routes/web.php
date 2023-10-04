@@ -27,12 +27,12 @@ Route::prefix('dashboard')->group(
     function(){
         Route::get('/',[halamanController::class,'index']);
         Route::resource('halaman',halamanController::class);
+        Route::resource('depan',DepanController::class);
     }
 );
 
 Route::get('/halaman/{id}/edit', [HalamanController::class, 'edit'])->name('halaman.edit');
 Route::put('/halaman/{id}', [HalamanController::class, 'update'])->name('halaman.update');
-
-
+Route::get('/depan/about', [DepanController::class, 'about'])->name('depan.about');
 
 
