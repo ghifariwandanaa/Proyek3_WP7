@@ -48,3 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// document.querySelector("nav-item").addEventListener("click", function (event) {
+//     event.preventDefault();
+//     // window.location.href = ""; // Ganti dengan URL halaman dashboard Anda
+// });
+

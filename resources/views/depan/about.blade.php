@@ -15,8 +15,7 @@
         type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{{ asset('depan') }}/css/styles.css" rel="stylesheet" />
-
+    <link href="{{ asset('depan') }}/css/about.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
 </head>
@@ -26,21 +25,21 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-block d-lg-none">{{ $data->judul }}</span>
-            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                <li class="nav-item">
+                    <a class="left-container" href="/dashboard/depan">Back to Dashboard</a></li>
             </ul>
         </div>
     </nav>
     <!-- Page Content-->
     <div class="container-fluid p-0">
         <!-- About-->
-        <section class="resume-section" id="about">
+        <section class="resume-section-conten" id="about">
             <div class="resume-section-content">
                 <div class="about-content">
                 <h1>About Me</h1>
@@ -53,6 +52,7 @@
                 <p><strong>Riwayat Pekerjaan:</strong> {{ $data->riwayatPekerjaan }}</p>
                 <p><strong>Keahlian:</strong> {{ $data->keahlian }}</p>
                 <p><strong>Data Diri:</strong> {{ $data->dataDiri }}</p>
+                <button id="download-cv-button">Download CV</button>
             </div>
         </div>
             </div>
