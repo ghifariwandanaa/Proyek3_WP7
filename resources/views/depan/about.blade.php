@@ -50,7 +50,22 @@
                 <p><strong>Alamat:</strong> {{ $data->alamat }}</p>
                 <p><strong>Kontak:</strong> {{ $data->kontak }}</p>
                 <p><strong>Riwayat Pendidikan:</strong> {{ $data->riwayatPendidikan }}</p>
-                <p><strong>Riwayat Pekerjaan:</strong> {{ $data->riwayatPekerjaan }}</p>
+                <p><strong>Riwayat Pekerjaan:</strong></p>
+                <ul>
+                    @if ($data->riwayatPekerjaan)
+                        @foreach ($data->riwayatPekerjaan as $pekerjaan)
+                            <li>
+                                    <strong>Tanggal Mulai:</strong> {{ $pekerjaan['tgl_mulai'] }}<br>
+                                    <strong>Tanggal Akhir:</strong> {{ $pekerjaan['tgl_akhir'] }}<br>
+                                    <strong>Info 1:</strong> {{ $pekerjaan['info1'] }}<br>
+                                    <strong>Info 2:</strong> {{ $pekerjaan['info2'] }}<br>
+                                    <strong>Info 3:</strong> {{ $pekerjaan['info3'] }}<br>
+                            </li>
+                        @endforeach
+                    @else
+                        <li>Tidak ada riwayat pekerjaan yang tersedia.</li>
+                    @endif
+                </ul>
                 <p><strong>Keahlian:</strong> {{ $data->keahlian }}</p>
                 <p><strong>Data Diri:</strong> {{ $data->dataDiri }}</p>
             </div>

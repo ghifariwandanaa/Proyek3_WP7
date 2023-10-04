@@ -28,9 +28,23 @@
         </div>
         <div class="mb-3">
           <label for="riwayatPekerjaan" class="form-label">Riwayat Pekerjaan</label>
-          <input type="text"class="form-control form-control sm" 
-          name="riwayatPekerjaan" id="riwayatPekerjaan" aria-describedby="helpId" placeholder="Riwayat Pekerjaan">
-        </div>
+          <div class="row">
+              <div class="col">
+                  <input type="text" class="form-control form-control sm" name="riwayatPekerjaan[0][tgl_mulai]" placeholder="Tanggal Mulai" required>
+              </div>
+              <div class="col">
+                  <input type="text" class="form-control form-control sm" name="riwayatPekerjaan[0][tgl_akhir]" placeholder="Tanggal Akhir" required>
+              </div>
+              <div class="col">
+                  <input type="text" class="form-control form-control sm" name="riwayatPekerjaan[0][namaPerusahaan]" placeholder="Nama Perusahaan" required>
+              </div>
+              <div class="col">
+                  <input type="text" class="form-control form-control sm" name="riwayatPekerjaan[0][domisilPerusahaan]" placeholder="Domisili Perusahaan" required>
+              </div>
+              <div class="col">
+                  <input type="text" class="form-control form-control sm" name="riwayatPekerjaan[0][jabatan]" placeholder="Jabatan" required>
+              </div>
+      </div>      
         <div class="mb-3">
           <label for="keahlian" class="form-label">Keahlian</label>
           <input type="text"class="form-control form-control sm" 
