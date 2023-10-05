@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('riwayatPendidikan');
             $table->string('keahlian');
             $table->text('dataDiri');
+            $table->string('gambar');
             $table->timestamps();
         });
 
