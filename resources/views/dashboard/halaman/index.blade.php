@@ -14,7 +14,7 @@
             <?php $i=1;?>
             @foreach ($data as $item)
             <tr>
-                <td>{{$i}}</td>
+                <td><img src="{{asset('storage/' . $item->gambar) }}" alt=""></td>
                 <td>{{$item->nama}}</td>
                 <td>
                     <a href="{{ route('halaman.edit', $item->id) }}" class="btn btn-sm btn-secondary">Edit</a>

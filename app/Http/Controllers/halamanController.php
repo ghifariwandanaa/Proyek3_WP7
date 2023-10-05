@@ -36,6 +36,7 @@ class halamanController extends Controller
             'kontak' => 'required',
             'keahlian' => 'required',
             'dataDiri' => 'required',
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
             'riwayatPendidikan.*.sekolah' => 'required',
             'riwayatPendidikan.*.jurusan' => 'required',
             'riwayatPendidikan.*.tahun' => 'required',
@@ -65,6 +66,11 @@ class halamanController extends Controller
         ]);
     
         // Simpan data dalam tabel 'halaman'
+        if ($request->file('gambar')) {
+            $gambar = $request->file('gambar');
+            $gambarPath = $gambar->store('gambar');
+        }
+
         $halaman = Halaman::create([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
@@ -72,6 +78,7 @@ class halamanController extends Controller
             'riwayatPendidikan'=>$request->riwayatPendidikan,
             'keahlian' => $request->keahlian,
             'dataDiri' => $request->dataDiri,
+            'gambar' => $gambarPath,
         ]);
     
         // Simpan data dalam tabel 'riwayat_pekerjaan'
