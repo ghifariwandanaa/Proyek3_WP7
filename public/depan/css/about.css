@@ -1,33 +1,33 @@
-/* Reset CSS untuk menghilangkan margin dan padding default */
+/* Reset CSS untuk menghilangkan margin dan padding default
 body, h1, p {
     margin: 0;
     padding: 0;
   }
   
   /* Style untuk container utama */
-  .about-container {
-    background-color: #f8f8f8; /* Warna latar belakang container */
+  /* .about-container {
+    background-color: #f8f8f8; 
     padding: 60px;
   }
   
-  /* Style untuk konten */
+  
   .about-content {
     background-color: #fff;
-    border-radius: 10px; /* Membuat sudut elemen menjadi lebih lembut */
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Efek bayangan elemen */
-    padding: 30px; /* Mengurangi padding konten agar tidak terlalu tebal */
+    border-radius: 10px; 
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); 
+    padding: 30px;
     text-align: center;
   }
   
-  /* Style untuk judul */
+  
   h1 {
     font-size: 36px;
     margin-bottom: 20px;
     color: #333;
-  }
+  } */
   
   /* Style untuk tombol */
-  #toggleButton {
+  /* #toggleButton {
     background-color: #333;
     color: #fff;
     border: none;
@@ -36,25 +36,25 @@ body, h1, p {
     cursor: pointer;
     border-radius: 5px;
     margin-bottom: 20px;
-    transition: background-color 0.3s ease; /* Efek transisi ketika hover */
+    transition: background-color 0.3s ease; 
   }
   
   #toggleButton:hover {
-    background-color: #0056b3; /* Warna latar belakang tombol saat hover */
+    background-color: #0056b3; 
   }
   
-  /* Style untuk detail informasi */
+
   .about-details {
     text-align: left;
     font-size: 16px;
     color: #555; 
     margin-top: 50px;
     background-color: #333;
-  }
+  } */
 
 
   /* Style untuk tautan navigasi */
-  nav ul {
+  /* nav ul {
     list-style: none;
     padding: 0;
   }
@@ -62,72 +62,57 @@ body, h1, p {
   nav ul li {
     display: inline;
     margin-right: 20px;
-  }
+  } */
   
   /* Style untuk footer (bagian bawah halaman) */
-  footer {
+  /* footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 10px;
-  }
+  } */
   
   /* Style untuk tautan navigasi di header */
-  nav ul li a {
+  /* nav ul li a {
     text-decoration: none;
     color: #333;
-  }
+  } */
   
   /* Style untuk tautan navigasi aktif (yang sedang dilihat) */
-  nav ul li a:hover {
+  /* nav ul li a:hover {
     color: #007bff;
-  }
+  } */
   
 /* Style untuk container sebelah kiri dengan latar belakang berwarna #67755E */
-.left-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%; /* Set tinggi sidebar menjadi 100% dari tinggi viewport */
-    width: 150px; /* Atur lebar sidebar sesuai keinginan Anda */
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    overflow-y: auto;
-  }
+
   
 
-  h1 {
+  /* h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 40px;
     margin-bottom: 20px;
     color: #333;
-    }
-
-.nav-item {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    letter-spacing: 0.05rem;
-    text-transform: uppercase;
-  }
+    } */
 
 
-  /* CSS untuk tombol "Download CV" */
-.download-cv-button {
+
+
+
+/* .download-cv-button {
     display: inline-block;
-    padding: 10px 20px; /* Sesuaikan ukuran padding sesuai keinginan Anda */
-    background-color: #688572; /* Warna latar belakang tombol */
-    color: #688572; /* Warna teks tombol */
-    font-size: 16px; /* Ukuran font teks tombol */
+    padding: 10px 20px; 
+    background-color: #688572; 
+    color: #688572; 
+    font-size: 16px; 
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Efek hover ketika mouse di atas tombol */
-}
+    transition: background-color 0.3s ease; 
+} */
 
-.download-cv-button:hover {
-    background-color: #688572; /* Warna latar belakang saat hover */
-}
+/* .download-cv-button:hover {
+    background-color: #688572; 
+} */
 
-section.resume-section {
+/* section.resume-section {
     display: flex;
     align-items: center;
     padding-left: 1rem;
@@ -135,21 +120,264 @@ section.resume-section {
     padding-top: 5rem;
     padding-bottom: 5rem;
     max-width: 75rem;
-  }
-  section.resume-section .resume-section-content {
+  } */
+  /* section.resume-section .resume-section-content {
     width: 100%;
-  }
+  } */
   
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     section.resume-section {
       min-height: 100vh;
     }
-  }
-  @media (min-width: 992px) {
+  } */
+  /* @media (min-width: 992px) {
     section.resume-section {
       padding-left: 3rem;
       padding-right: 3rem;
       padding-top: 5rem;
       padding-bottom: 5rem;
     }
-  }
+  } */ 
+
+  /*-------------------------*/
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+  .nav-item {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+  } */
+
+  .left-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%; 
+    width: 150px; 
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    overflow-y: auto;
+  } 
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+:root {
+	--primary-color: #ff7613;
+	--text-color: #727171;
+}
+html {
+	font-size: 10px;
+}
+body {
+	font-family: Inter, sans-serif;
+	background-color: black;
+	color: white;
+}
+
+/* common styles */
+img {
+	width: 100%;
+}
+a {
+	text-decoration: none;
+	color: white;
+}
+.description {
+	margin-top: 1rem;
+	font-size: 1.5rem;
+	font-weight: 400;
+	color: var(--text-color);
+}
+.title {
+	color: var(--primary-color);
+	font-weight: 700;
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+.item_preTitle {
+	font-size: 1.4rem;
+	color: var(--text-color);
+	font-weight: 300;
+}
+.item_title {
+	font-size: 1.6rem;
+	color: white;
+	font-weight: 500;
+	margin: 0.8rem 0;
+}
+.item_subtitle {
+	font-size: 1.4rem;
+	color: var(--text-color);
+	font-weight: 400;
+}
+
+/* layouts */
+.container {
+	max-width: 1000px;
+	width: 90%;
+	margin: 0 auto;
+	display: grid;
+	padding: 5rem;
+	background: #070707;
+	grid-template-columns: 1fr 1fr;
+	gap: 4rem;
+}
+@media only screen and (max-width: 768px) {
+	.container {
+		width: 100%;
+		grid-template-columns: 1fr;
+		padding: 3rem;
+		gap: 7rem;
+	}
+}
+.profile {
+	grid-column: 1 / -1;
+	margin-bottom: 2rem;
+}
+.group-1,
+.group-2 {
+	display: absolute;
+	flex-direction: column;
+	gap: 5rem;
+}
+.group-3 {
+	max-width: 700px;
+	width: 100%;
+	margin: 0 auto;
+	grid-column: 1/-1;
+	display: flex;
+	flex-direction: row;
+	gap: 5rem;
+}
+.group-3 > div {
+	flex: 1;
+}
+@media only screen and (max-width: 768px) {
+	.profile {
+		margin-bottom: 0;
+	}
+	.group-3 {
+		flex-direction: column;
+	}
+}
+
+/* profile */
+.profile_container {
+	display: flex;
+	gap: 2rem;
+}
+.profile_profileImg {
+	max-width: 250px;
+}
+.profile_name_lastName {
+	color: var(--primary-color);
+	font-weight: 700;
+	font-size: clamp(2.5rem, 15vw, 7rem);
+	text-transform: uppercase;
+	display: block;
+}
+.profile_title {
+	font-size: 1.5rem;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.downloadBtn {
+	display: block;
+	text-decoration: underline;
+	font-size: 1.6rem;
+	margin-top: 1rem;
+}
+.downloadBtn:hover {
+	color: var(--primary-color);
+}
+@media only screen and (max-width: 768px) {
+	.profile_container {
+		flex-direction: column;
+	}
+}
+
+/* Keahlian */
+.skills_list {
+	margin-top: 1rem;
+	margin-left: 2rem;
+	line-height: 2;
+}
+
+/* eduction */
+.edu_item {
+	margin-top: 2rem;
+}
+
+/* exp */
+.exp_item {
+	margin-top: 2rem;
+}
+
+/* awards */
+.awards_item {
+	margin-top: 2rem;
+}
+/* Interests */
+.interest_items {
+	margin-top: 2rem;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 2rem;
+}
+.interest_item {
+	font-size: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	color: var(--text-color);
+}
+.interest_item svg {
+	width: 2rem;
+}
+
+/* socials */
+.social_items {
+	margin-top: 2rem;
+}
+.social_item {
+	margin-top: 1.5rem;
+	font-size: 1.5rem;
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: flex-start;
+	color: var(--text-color);
+}
+.social_item:hover {
+	color: var(--primary-color);
+}
+.social_item svg {
+	width: 2rem;
+}
+
+hr {
+	grid-column: 1/-1;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 5rem;
+	margin-bottom: 1rem;
+	border: none;
+	border-top: 2px solid rgba(128, 128, 128, 0.229);
+}
+
+
+@media only screen and (max-width: 768px) {
+	hr {
+		margin: 0 auto;
+	}
+}
