@@ -23,7 +23,23 @@
 
     <div class="mb-3">
         <label for="riwayatPendidikan" class="form-label">Riwayat Pendidikan</label>
-        <input type="text" class="form-control form-control sm" name="riwayatPendidikan" id="riwayatPendidikan" aria-describedby="helpId" placeholder="Riwayat Pendidikan">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nama Sekolah/Universitas</th>
+                    <th>Tahun Masuk</th>
+                    <th>Tahun Keluar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" name="riwayatPendidikan[0][namaSekolah]" placeholder="Nama Sekolah/Universitas" required></td>
+                    <td><input type="text" class="form-control" name="riwayatPendidikan[0][thn_mulai]" placeholder="Tahun Masuk" required></td>
+                    <td><input type="text" class="form-control" name="riwayatPendidikan[0][thn_akhir]" placeholder="Tahun Keluar" required></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-secondary" id="tambahRiwayatPendidikan">Tambah Riwayat Pendidikan</button>
     </div>
 
     <div class="mb-3">
@@ -80,6 +96,19 @@
             <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][jabatan]" placeholder="Jabatan" required></td>
             <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_mulai]" required></td>
             <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_akhir]" required></td>
+        `;
+        document.querySelector('tbody').appendChild(newRow);
+        riwayatPekerjaanIndex++;
+    });
+
+    let riwayatPendidikanIndex = 1;
+
+    document.getElementById('tambahRiwayatPendidikan').addEventListener('click', function() {
+        let newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][namaSekolah]" placeholder="Nama Sekolah/Universitas" required></td>
+            <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_mulai]" placeholder="Tahun Masuk" required></td>
+            <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_akhir]" placeholder="Tahun Keluar" required></td>
         `;
         document.querySelector('tbody').appendChild(newRow);
         riwayatPekerjaanIndex++;

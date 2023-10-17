@@ -15,7 +15,6 @@ return new class extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('kontak');
-            $table->string('riwayatPendidikan');
             $table->string('keahlian');
             $table->text('dataDiri');
             $table->string('gambar');
@@ -24,12 +23,21 @@ return new class extends Migration
 
         Schema::create('riwayat_pekerjaan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('halaman_id')->constrained();
+            $table->foreignId('halaman_id')->constrained('halaman');
             $table->date('tgl_mulai');
             $table->date('tgl_akhir');
             $table->string('namaPerusahaan');
             $table->string('domisilPerusahaan');
             $table->string('jabatan');
+            $table->timestamps();
+        });
+
+        Schema::create('riwayat_pendidikan', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('halaman_id')->constrained('halaman');
+            $table->string('thn_mulai');
+            $table->string('thn_akhir');
+            $table->string('namaSekolah');
             $table->timestamps();
         });
     }
@@ -40,6 +48,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('riwayat_pekerjaan');
+        Schema::dropIfExists('riwayat_pendidikan');
         Schema::dropIfExists('halaman');
     }
 };
