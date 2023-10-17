@@ -31,7 +31,7 @@
                     <th>Tahun Keluar</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="Pendidikan">
                 <tr>
                     <td><input type="text" class="form-control" name="riwayatPendidikan[0][namaSekolah]" placeholder="Nama Sekolah/Universitas" required></td>
                     <td><input type="text" class="form-control" name="riwayatPendidikan[0][thn_mulai]" placeholder="Tahun Masuk" required></td>
@@ -54,7 +54,7 @@
                     <th>Tanggal Akhir</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id = "Pekerjaan">
                 <tr>
                     <td><input type="text" class="form-control" name="riwayatPekerjaan[0][namaPerusahaan]" placeholder="Nama Perusahaan" required></td>
                     <td><input type="text" class="form-control" name="riwayatPekerjaan[0][domisilPerusahaan]" placeholder="Domisili Perusahaan" required></td>
@@ -68,8 +68,24 @@
     </div>
 
     <div class="mb-3">
-        <label for="keahlian" class="form-label">Keahlian</label>
-        <input type="text" class="form-control form-control sm" name="keahlian" id="keahlian" aria-describedby="helpId" placeholder="Keahlian">
+        <label for="softskill" class="form-label">Soft Skill</label>
+        <textarea class="form-control" rows="3" name="hardskill"></textarea>
+        <label for="hardskill" class="form-label">Hard Skills</label>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nama Skill</th>
+                    <th>Tingkat (%)</th>
+                </tr>
+            </thead>
+            <tbody id="hardSkill">
+                <tr>
+                    <td><input type="text" class="form-control" name="hardSkills[0][namaSkill]" placeholder="Nama Skill" required></td>
+                    <td><input type="number" class="form-control" name="hardSkills[0][tingkatanSkill]" placeholder="Tingkat (%) (0-100)" required></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-secondary" id="tambahSoftSkill">Tambah Soft Skill</button>
     </div>
 
     <div class="mb-3">
@@ -97,7 +113,7 @@
             <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_mulai]" required></td>
             <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_akhir]" required></td>
         `;
-        document.querySelector('tbody').appendChild(newRow);
+        document.getElementById('Pekerjaan').appendChild(newRow);
         riwayatPekerjaanIndex++;
     });
 
@@ -110,9 +126,26 @@
             <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_mulai]" placeholder="Tahun Masuk" required></td>
             <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_akhir]" placeholder="Tahun Keluar" required></td>
         `;
-        document.querySelector('tbody').appendChild(newRow);
+        document.getElementById('Pendidikan').appendChild(newRow);
         riwayatPekerjaanIndex++;
     });
+
+    let hardSkillIndex = 1;
+
+    document.getElementById('tambahSoftSkill').addEventListener('click', function() {
+        let newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><input type="text" class="form-control" name="hardSkills[${hardSkillIndex}][namaSkill]" placeholder="Nama Skill" required></td>
+            <td><input type="number" class="form-control" name="hardSkills[${hardSkillIndex}][tingkatanSkill]" placeholder="Tingkat (%) (0-100)" required></td>
+        `;
+        document.getElementById('hardSkill').appendChild(newRow);
+        hardSkillIndex++;
+    });
+
+
+
+
+
 </script>
 </div>
 @endsection

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('kontak');
-            $table->string('keahlian');
             $table->text('dataDiri');
             $table->string('gambar');
             $table->timestamps();
@@ -40,6 +39,15 @@ return new class extends Migration
             $table->string('namaSekolah');
             $table->timestamps();
         });
+
+        Schema::create('skills', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('halaman_id')->constrained('halaman');
+            $table->string('namaSkill');
+            $table->integer('tingkatanSkill'); // Menggunakan tipe data integer, bukan 'int'
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -47,8 +55,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('halaman');
         Schema::dropIfExists('riwayat_pekerjaan');
         Schema::dropIfExists('riwayat_pendidikan');
-        Schema::dropIfExists('halaman');
+        Schema::dropIfExists('skills');
     }
 };

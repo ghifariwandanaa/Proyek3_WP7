@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\halaman;
 use App\Models\RiwayatPekerjaan;
 use App\Models\RiwayatPendidikan;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class halamanController extends Controller
@@ -35,7 +36,6 @@ class halamanController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'kontak' => 'required',
-            'keahlian' => 'required',
             'dataDiri' => 'required',
             'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
             'riwayatPekerjaan.*.tgl_mulai' => 'required',
@@ -49,7 +49,6 @@ class halamanController extends Controller
             'nama.required' => 'Nama Wajib Diisi',
             'alamat.required' => 'Alamat Wajib Diisi',
             'kontak.required' => 'Kontak Wajib Diisi',
-            'keahlian.required' => 'Keahlian Wajib Diisi',
             'dataDiri.required' => 'Deskripsi Diri Wajib Diisi',    
             'riwayatPekerjaan.*.tgl_mulai.required' => 'Tanggal Mulai pada Riwayat Pekerjaan Wajib Diisi',
             'riwayatPekerjaan.*.tgl_akhir.required' => 'Tanggal Akhir pada Riwayat Pekerjaan Wajib Diisi',
@@ -70,7 +69,6 @@ class halamanController extends Controller
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
-            'keahlian' => $request->keahlian,
             'dataDiri' => $request->dataDiri,
             'gambar' => $gambarPath,
         ]);
@@ -87,13 +85,22 @@ class halamanController extends Controller
             ]);
         }
 
-        // Simpan data dalam tabel 'riwayat_pendidikan'
+        //simpan data riwayat pendidikan
         foreach ($request->riwayatPendidikan as $pendidikan) {
             RiwayatPendidikan::create([
                 'halaman_id' => $halaman->id,
                 'thn_mulai' => $pendidikan['thn_mulai'],
                 'thn_akhir' => $pendidikan['thn_akhir'],
                 'namaSekolah' => $pendidikan['namaSekolah'],
+            ]);
+        }
+
+        // Simpan data dalam tabel 'Skill'
+        foreach ($request->hardSkills as $skill) {
+            Skill::create([
+                'halaman_id' => $halaman->id,
+                'namaSkill' => $skill['namaSkill'],
+                'tingkatanSkill' => $skill['tingkatanSkill'],
             ]);
         }
     
@@ -141,6 +148,7 @@ class halamanController extends Controller
         ]);
 
         // Temukan halaman berdasarkan ID
+
         $halaman = halaman::find($id);
 
         // Periksa apakah halaman ditemukan
