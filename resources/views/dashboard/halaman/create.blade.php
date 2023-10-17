@@ -12,7 +12,7 @@
     </div>
 
     <div class="mb-3">
-        <label for "alamat" class="form-label">Alamat</label>
+        <label for="alamat" class="form-label">Alamat</label>
         <input type="text" class="form-control form-control sm" name="alamat" id="alamat" aria-describedby="helpId" placeholder="Alamat">
     </div>
 
@@ -28,30 +28,27 @@
 
     <div class="mb-3">
         <label for="riwayatPekerjaan" class="form-label">Riwayat Pekerjaan</label>
-        <div class="row">
-            <div class="col">
-                <input type="text" class="form-control form-control sm" name="riwayatPekerjaan[0][namaPerusahaan]" placeholder="Nama Perusahaan" required>
-            </div>
-            <div class="col">
-                <input type="text" class="form-control form-control sm" name="riwayatPekerjaan[0][domisilPerusahaan]" placeholder="Domisili Perusahaan" required>
-            </div>
-            <div class="col">
-                <input type="text" class="form-control form-control sm" name="riwayatPekerjaan[0][jabatan]" placeholder="Jabatan" required>
-            </div>
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <div class="row align-items-center">
-            <div class="col-auto">Tanggal Mulai</div>
-            <div class="col-auto">
-                <input type="date" class="form-control form-control sm" name="riwayatPekerjaan[0][tgl_mulai]" placeholder="dd/mm/yy" required>
-            </div>
-            <div class="col-auto">Tanggal Akhir</div>
-            <div class="col-auto">
-                <input type="date" class="form-control form-control sm" name="riwayatPekerjaan[0][tgl_akhir]" placeholder="dd/mm/yy" required>
-            </div>
-        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nama Perusahaan</th>
+                    <th>Domisili Perusahaan</th>
+                    <th>Jabatan</th>
+                    <th>Tanggal Mulai</th>
+                    <th>Tanggal Akhir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" name="riwayatPekerjaan[0][namaPerusahaan]" placeholder="Nama Perusahaan" required></td>
+                    <td><input type="text" class="form-control" name="riwayatPekerjaan[0][domisilPerusahaan]" placeholder="Domisili Perusahaan" required></td>
+                    <td><input type="text" class="form-control" name="riwayatPekerjaan[0][jabatan]" placeholder="Jabatan" required></td>
+                    <td><input type="date" class="form-control" name="riwayatPekerjaan[0][tgl_mulai]" required></td>
+                    <td><input type="date" class="form-control" name="riwayatPekerjaan[0][tgl_akhir]" required></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-secondary" id="tambahRiwayatPekerjaan">Tambah Riwayat Pekerjaan</button>
     </div>
 
     <div class="mb-3">
@@ -71,4 +68,22 @@
 
     <button class="btn btn-primary" name="simpan" type="submit">SIMPAN</button>
 </form>
+
+<script>
+    let riwayatPekerjaanIndex = 1;
+
+    document.getElementById('tambahRiwayatPekerjaan').addEventListener('click', function() {
+        let newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][namaPerusahaan]" placeholder="Nama Perusahaan" required></td>
+            <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][domisilPerusahaan]" placeholder="Domisili Perusahaan" required></td>
+            <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][jabatan]" placeholder="Jabatan" required></td>
+            <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_mulai]" required></td>
+            <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_akhir]" required></td>
+        `;
+        document.querySelector('tbody').appendChild(newRow);
+        riwayatPekerjaanIndex++;
+    });
+</script>
+</div>
 @endsection
