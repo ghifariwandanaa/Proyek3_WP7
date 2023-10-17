@@ -4,7 +4,7 @@
     <div class="pb-3"><a href="{{route('halaman.index')}}"
         class="btn btn-secondary"> Kembali</a>
     </div>
-    <form action="{{route('halaman.store')}}"method="post">
+    <form action="{{route('halaman.store')}}"method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
           <label for="nama" class="form-label">Nama</label>
