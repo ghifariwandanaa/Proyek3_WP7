@@ -131,6 +131,7 @@ class halamanController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // Validasi input
         $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
@@ -139,42 +140,40 @@ class halamanController extends Controller
             'dataDiri' => 'required',
         ]);
 
+        // Temukan halaman berdasarkan ID
         $halaman = halaman::find($id);
 
+        // Periksa apakah halaman ditemukan
         if (!$halaman) {
             return redirect()->route('halaman.index')->with('error', 'Data tidak ditemukan');
         }
 
+        // Periksa apakah riwayatPekerjaan ada dan memiliki data
+        if ($request->has('riwayatPekerjaan') && is_array($request->riwayatPekerjaan)) {
+            // Hapus semua riwayat pekerjaan yang terkait dengan halaman ini
+            RiwayatPekerjaan::where('halaman_id', $halaman->id)->delete();
+
+            // Simpan data riwayat pekerjaan yang baru
+            foreach ($request->riwayatPekerjaan as $pekerjaan) {
+                RiwayatPekerjaan::create([
+                    'halaman_id' => $halaman->id,
+                    'tgl_mulai' => $pekerjaan['tgl_mulai'],
+                    'tgl_akhir' => $pekerjaan['tgl_akhir'],
+                    'namaPerusahaan' => $pekerjaan['namaPerusahaan'],
+                    'domisilPerusahaan' => $pekerjaan['domisilPerusahaan'],
+                    'jabatan' => $pekerjaan['jabatan'],
+                ]);
+            }
+        }
+
         // Update data pada halaman
-        $halaman->update($request->all());
-
-        // Hapus semua riwayat pekerjaan yang terkait dengan halaman ini
-        RiwayatPekerjaan::where('halaman_id', $halaman->id)->delete();
-
-        // Hapus semua riwayat pendidikan yang terkait dengan halaman ini
-        RiwayatPendidikan::where('halaman_id', $halaman->id)->delete();
-
-        // Simpan data riwayat pekerjaan yang baru
-        foreach ($request->riwayatPekerjaan as $pekerjaan) {
-            RiwayatPekerjaan::create([
-                'halaman_id' => $halaman->id,
-                'tgl_mulai' => $pekerjaan['tgl_mulai'],
-                'tgl_akhir' => $pekerjaan['tgl_akhir'],
-                'namaPerusahaan' => $pekerjaan['namaPerusahaan'],
-                'domisilPerusahaan' => $pekerjaan['domisilPerusahaan'],
-                'jabatan' => $pekerjaan['jabatan'],
-            ]);
-        }
-
-        // Simpan data riwayat pendidikan yang baru
-        foreach ($request->riwayatPendidikan as $pendidikan) {
-            RiwayatPendidikan::create([
-                'halaman_id' => $halaman->id,
-                'thn_mulai' => $pendidikan['thn_mulai'],
-                'thn_akhir' => $pendidikan['thn_akhir'],
-                'namaSekolah' => $pendidikan['namaSekolah'],
-            ]);
-        }
+        $halaman->update([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'kontak' => $request->kontak,
+            'keahlian' => $request->keahlian,
+            'dataDiri' => $request->dataDiri,
+        ]);
 
         return redirect()->route('halaman.index')->with('success', 'Data berhasil diperbarui');
     }
