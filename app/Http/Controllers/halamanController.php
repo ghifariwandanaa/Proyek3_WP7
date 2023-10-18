@@ -127,13 +127,15 @@ class halamanController extends Controller
             return redirect()->route('halaman.index')->with('error', 'Data tidak ditemukan');
         }
 
+        $riwayatPendidikan = RiwayatPendidikan::where('halaman_id', $halaman->id)->get();
+
         // Ambil semua riwayat pekerjaan yang terkait dengan halaman ini
         $riwayatPekerjaan = RiwayatPekerjaan::where('halaman_id', $halaman->id)->get();
         
         // Ambil data keahlian (skills) yang terkait dengan halaman ini
         $skills = Skill::where('halaman_id', $halaman->id)->get();
 
-        return view('dashboard.halaman.edit', compact('halaman', 'riwayatPekerjaan', 'skills'));
+        return view('dashboard.halaman.edit', compact('halaman', 'riwayatPekerjaan', 'skills',  'riwayatPendidikan'));
     }
 
 

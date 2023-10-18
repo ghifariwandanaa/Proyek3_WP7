@@ -34,15 +34,13 @@
                 </tr>
             </thead>
             <tbody id="Pendidikan">
-                @if($halaman->riwayatPendidikan)
-                    @foreach($halaman->riwayatPendidikan as $pendidikan)
-                        <tr>
-                            <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $pendidikan['id'] }}][namaSekolah]" placeholder="Nama Sekolah/Universitas" value="{{ $pendidikan['namaSekolah'] }}" required></td>
-                            <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $pendidikan['id'] }}][thn_mulai]" placeholder="Tahun Masuk" value="{{ $pendidikan['thn_mulai'] }}" required></td>
-                            <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $pendidikan['id'] }}][thn_akhir]" placeholder="Tahun Keluar" value="{{ $pendidikan['thn_akhir'] }}" required></td>
-                        </tr>
-                    @endforeach
-                @endif
+                @foreach ($riwayatPendidikan as $pendidikan)
+                    <tr>
+                        <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $pendidikan['id'] }}][namaSekolah]" placeholder="Nama Sekolah/Universitas" value="{{ $pendidikan -> namaSekolah }}" required></td>
+                        <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $pendidikan['id'] }}][thn_mulai]" placeholder="Tahun Masuk" value="{{ $pendidikan -> thn_mulai }}" required></td>
+                        <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $pendidikan['id'] }}][thn_akhir]" placeholder="Tahun Keluar" value="{{ $pendidikan -> thn_akhir }}" required></td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <button type="button" class="btn btn-secondary" id="tambahRiwayatPendidikan">Tambah Riwayat Pendidikan</button>
@@ -63,24 +61,22 @@
                 </tr>
             </thead>
             <tbody id="Pekerjaan">
-                @if($halaman->$riwayatPekerjaan)
-                    @foreach ($halaman->riwayatPekerjaan as $pekerjaan)
-                        <tr>
-                            <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][namaPerusahaan]" placeholder="Nama Perusahaan" value="{{ $pekerjaan->namaPerusahaan }}" required></td>
-                            <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][domisilPerusahaan]" placeholder="Domisili Perusahaan" value="{{ $pekerjaan->domisilPerusahaan }}" required></td>
-                            <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][jabatan]" placeholder="Jabatan" value="{{ $pekerjaan->jabatan }}" required></td>
-                            <td><input type="date" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][tgl_mulai]" value="{{ $pekerjaan->tgl_mulai }}" required></td>
-                            <td><input type="date" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][tgl_akhir]" value="{{ $pekerjaan->tgl_akhir }}" required></td>
-                        </tr>
-                    @endforeach
-                @endif
+            @foreach ($riwayatPekerjaan as $pekerjaan)
+                    <tr>
+                        <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][namaPerusahaan]" placeholder="Nama Perusahaan" value="{{ $pekerjaan->namaPerusahaan }}" required></td>
+                        <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][domisilPerusahaan]" placeholder="Domisili Perusahaan" value="{{ $pekerjaan->domisilPerusahaan }}" required></td>
+                        <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][jabatan]" placeholder="Jabatan" value="{{ $pekerjaan->jabatan }}" required></td>
+                        <td><input type="date" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][tgl_mulai]" value="{{ $pekerjaan->tgl_mulai }}" required></td>
+                        <td><input type="date" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][tgl_akhir]" value="{{ $pekerjaan->tgl_akhir }}" required></td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <button type="button" class="btn btn-secondary" id="tambahRiwayatPekerjaan">Tambah Riwayat Pekerjaan</button>
     </div>
 
     <div class="mb-3">
-        <label for="hardSkill" class="form-label">Skill</label>
+        <label for="hardskill" class="form-label">Skills</label>
         <table class="table">
             <thead>
                 <tr>
@@ -89,19 +85,19 @@
                 </tr>
             </thead>
             <tbody id="hardSkill">
-                @if($halaman->hardSkills)
-                    @foreach ($halaman->hardSkills as $skill)
-                        <tr>
-                            <td><input type="text" class="form-control" name="hardSkills[{{ $skill->id }}][namaSkill]" placeholder="Nama Skill" value="{{ $skill->namaSkill }}" required></td>
-                            <td><input type="number" class="form-control" name="hardSkills[{{ $skill->id }}][tingkatanSkill]" placeholder="Tingkat (%) (0-100)" value="{{ $skill->tingkatanSkill }}" required></td>
-                        </tr>
-                    @endforeach
-                @endif
+                @foreach($skills as $index => $skill)
+                <tr>
+                    <td><input type="text" class="form-control" name="skills[{{ $index }}][id]" value="{{ $skill->id }}" style="display:none;"> <!-- Menyimpan ID skill yang sudah ada -->
+                        <input type="text" class="form-control" name="skills[{{ $index }}][namaSkill]" value="{{ $skill->namaSkill }}" placeholder="Nama Skill" required></td>
+                    <td><input type="number" class="form-control" name="skills[{{ $index }}][tingkatanSkill]" value="{{ $skill->tingkatanSkill }}" placeholder="Tingkat (%) (0-100)" required></td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
-        <button type="button" class="btn btn-secondary" id="tambahHardSkill">Tambah Skill</button>
+        <button type="button" class="btn btn-secondary" id="tambahHardSkill">Tambah skill</button>
+    </div>
 
-        <div class="mb-3">
+        <div\ class="mb-3">
             <label for="dataDiri" class="form-label">Deskripsi Diri</label>
             <textarea class="form-control" rows="5" name="dataDiri" value="{{ $halaman->dataDiri }}"></textarea>
         </div>
@@ -110,20 +106,8 @@
     </div>
 
     <script>
+        let riwayatPekerjaanIndex = 1;
 
-        // Skrip JavaScript untuk menambahkan input dinamis
-        document.getElementById('tambahRiwayatPendidikan').addEventListener('click', function() {
-            let newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][namaSekolah]" placeholder="Nama Sekolah/Universitas" required></td>
-                <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_mulai]" placeholder="Tahun Masuk" required></td>
-                <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_akhir]" placeholder="Tahun Keluar" required></td>
-            `;
-            document.getElementById('Pendidikan').appendChild(newRow);
-            riwayatPendidikanIndex++;
-        });
-
-        // Skrip JavaScript untuk menambahkan input dinamis untuk Riwayat Pekerjaan
         document.getElementById('tambahRiwayatPekerjaan').addEventListener('click', function() {
             let newRow = document.createElement('tr');
             newRow.innerHTML = `
@@ -137,7 +121,21 @@
             riwayatPekerjaanIndex++;
         });
 
-        // Skrip JavaScript untuk menambahkan input dinamis untuk Keterampilan Keras
+        let riwayatPendidikanIndex = 1;
+
+        document.getElementById('tambahRiwayatPendidikan').addEventListener('click', function() {
+            let newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][namaSekolah]" placeholder="Nama Sekolah/Universitas" required></td>
+                <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_mulai]" placeholder="Tahun Masuk" required></td>
+                <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_akhir]" placeholder="Tahun Keluar" required></td>
+            `;
+            document.getElementById('Pendidikan').appendChild(newRow);
+            riwayatPekerjaanIndex++;
+        });
+
+        let hardSkillIndex = 1;
+
         document.getElementById('tambahHardSkill').addEventListener('click', function() {
             let newRow = document.createElement('tr');
             newRow.innerHTML = `
@@ -148,7 +146,6 @@
             hardSkillIndex++;
         });
 
-        // Anda dapat menggunakan skrip JavaScript yang sama dengan formulir create untuk menambahkan riwayat pendidikan, riwayat pekerjaan, dan keterampilan keras secara dinamis.
     </script>
 
 </form>
