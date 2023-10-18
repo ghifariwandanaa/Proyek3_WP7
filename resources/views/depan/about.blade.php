@@ -68,12 +68,12 @@
       <div class="edu">
         <h3 class="title">Riwayat Pendidikan</h3>
         <div class="edu_item">
-        @foreach ($data['riwayatPendidikan'] as $riwayat)
+        @foreach ($data['riwayatPendidikan'] as $riwayatpd)
         <tr>
-            <td class="item_preTitle">{{ $riwayat->thn_mulai }}</td>
+            <td class="item_preTitle">{{ $riwayatpd->thn_mulai }}</td>
             <td class="item_preTitle">-</td>
-            <td class="item_preTitle">{{ $riwayat->thn_akhir }}</td>
-            <p class="item_subtitle">{{ $riwayat->namaSekolah }}</p>
+            <td class="item_preTitle">{{ $riwayatpd->thn_akhir }}</td>
+            <p class="item_subtitle">{{ $riwayatpd->namaSekolah }}</p>
         </tr>
         @endforeach
         </div>
@@ -84,11 +84,11 @@
       <div class="exp">
         <h3 class="title">Riwayat Pekerjaan</h3>
         <div class="exp_item">
-        @foreach ($data['riwayatPekerjaan'] as $riwayat)
+        @foreach ($data['riwayatPekerjaan'] as $riwayatpk)
             <tr>
-                <td class="item_preTitle">{{ $riwayat->tgl_mulai }} sd. {{ $riwayat->tgl_akhir }}</td>
-                <p class="item_title">{{ $riwayat->namaPerusahaan }} - {{ $riwayat->domisilPerusahaan }}</p>
-                <p class="item_subtitle">{{ $riwayat->jabatan }}</p>
+                <td class="item_preTitle">{{ $riwayatpk->tgl_mulai }} sd. {{ $riwayatpk->tgl_akhir }}</td>
+                <p class="item_title">{{ $riwayatpk->namaPerusahaan }} - {{ $riwayatpk->domisilPerusahaan }}</p>
+                <p class="item_subtitle">{{ $riwayatpk->jabatan }}</p>
             </tr>
       @endforeach
         </div>

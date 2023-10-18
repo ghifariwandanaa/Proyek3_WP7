@@ -23,8 +23,7 @@ class DepanController extends Controller
         $riwayatPendidikan = RiwayatPendidikan::where('halaman_id', $halaman->id)->get();
         $keahlian = Skill::where('halaman_id', $halaman->id)->get();
 
-        return view('depan.about', ['data' => ['halaman' => $halaman, 'riwayatPekerjaan' => $riwayatPekerjaan, 
-        'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian ]]);
+        return view('depan.about', ['data' => ['halaman' => $halaman, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian ]]);
     }
     
 }
