@@ -246,6 +246,9 @@ class halamanController extends Controller
         // Hapus semua riwayat pekerjaan yang terkait dengan halaman ini
         RiwayatPekerjaan::where('halaman_id', $halaman->id)->delete();
 
+        // Hapus semua riwayat pendidikan yang terkait dengan halaman ini
+        RiwayatPendidikan::where('halaman_id', $halaman->id)->delete();
+
         // Hapus halaman itu sendiri
         $halaman->delete();
 
