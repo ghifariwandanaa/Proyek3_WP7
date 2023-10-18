@@ -107,6 +107,7 @@ class halamanController extends Controller
         return redirect()->route('halaman.index');
     }
 
+
     /**
      * Display the specified resource.
      */
@@ -120,7 +121,7 @@ class halamanController extends Controller
      */
     public function edit(string $id)
     {
-        $halaman = halaman::find($id);
+        $halaman = Halaman::find($id);
 
         if (!$halaman) {
             return redirect()->route('halaman.index')->with('error', 'Data tidak ditemukan');
@@ -128,63 +129,108 @@ class halamanController extends Controller
 
         // Ambil semua riwayat pekerjaan yang terkait dengan halaman ini
         $riwayatPekerjaan = RiwayatPekerjaan::where('halaman_id', $halaman->id)->get();
+        
+        // Ambil data keahlian (skills) yang terkait dengan halaman ini
+        $skills = Skill::where('halaman_id', $halaman->id)->get();
 
-        return view('dashboard.halaman.edit', compact('halaman', 'riwayatPekerjaan'));
+        return view('dashboard.halaman.edit', compact('halaman', 'riwayatPekerjaan', 'skills'));
     }
+
 
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        // Validasi input
-        $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-            'kontak' => 'required',
-            'keahlian' => 'required',
-            'dataDiri' => 'required',
-        ]);
+{
+    // Validasi input
+    $request->validate([
+        'nama' => 'required',
+        'alamat' => 'required',
+        'kontak' => 'required',
+        'dataDiri' => 'required',
+        'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'riwayatPekerjaan.*.tgl_mulai' => 'required|date',
+        'riwayatPekerjaan.*.tgl_akhir' => 'required|date',
+        'riwayatPekerjaan.*.namaPerusahaan' => 'required',
+        'riwayatPekerjaan.*.domisilPerusahaan' => 'required',
+        'riwayatPekerjaan.*.jabatan' => 'required',
+        'skills.*.namaSkill' => 'required',
+        'skills.*.tingkatanSkill' => 'required|numeric|between:0,100',
+    ], [
+        'riwayatPekerjaan.*.tgl_mulai.required' => 'Tanggal Mulai pada Riwayat Pekerjaan Wajib Diisi dengan format YYYY-MM-DD',
+        'riwayatPekerjaan.*.tgl_akhir.required' => 'Tanggal Akhir pada Riwayat Pekerjaan Wajib Diisi dengan format YYYY-MM-DD',
+        'riwayatPekerjaan.*.namaPerusahaan.required' => 'Nama Perusahaan pada Riwayat Pekerjaan Wajib Diisi',
+        'riwayatPekerjaan.*.domisilPerusahaan.required' => 'Domisili Perusahaan pada Riwayat Pekerjaan Wajib Diisi',
+        'riwayatPekerjaan.*.jabatan.required' => 'Jabatan pada Riwayat Pekerjaan Wajib Diisi',
+        'skills.*.namaSkill.required' => 'Nama Keahlian Wajib Diisi',
+        'skills.*.tingkatanSkill.required' => 'Tingkatan Keahlian Wajib Diisi',
+        'skills.*.tingkatanSkill.numeric' => 'Tingkatan Keahlian harus berupa angka',
+        'skills.*.tingkatanSkill.between' => 'Tingkatan Keahlian harus antara 0 dan 100',
+    ]);
 
-        // Temukan halaman berdasarkan ID
+    // Temukan halaman berdasarkan ID
+    $halaman = Halaman::find($id);
 
-        $halaman = halaman::find($id);
-
-        // Periksa apakah halaman ditemukan
-        if (!$halaman) {
-            return redirect()->route('halaman.index')->with('error', 'Data tidak ditemukan');
-        }
-
-        // Periksa apakah riwayatPekerjaan ada dan memiliki data
-        if ($request->has('riwayatPekerjaan') && is_array($request->riwayatPekerjaan)) {
-            // Hapus semua riwayat pekerjaan yang terkait dengan halaman ini
-            RiwayatPekerjaan::where('halaman_id', $halaman->id)->delete();
-
-            // Simpan data riwayat pekerjaan yang baru
-            foreach ($request->riwayatPekerjaan as $pekerjaan) {
-                RiwayatPekerjaan::create([
-                    'halaman_id' => $halaman->id,
-                    'tgl_mulai' => $pekerjaan['tgl_mulai'],
-                    'tgl_akhir' => $pekerjaan['tgl_akhir'],
-                    'namaPerusahaan' => $pekerjaan['namaPerusahaan'],
-                    'domisilPerusahaan' => $pekerjaan['domisilPerusahaan'],
-                    'jabatan' => $pekerjaan['jabatan'],
-                ]);
-            }
-        }
-
-        // Update data pada halaman
-        $halaman->update([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'kontak' => $request->kontak,
-            'keahlian' => $request->keahlian,
-            'dataDiri' => $request->dataDiri,
-        ]);
-
-        return redirect()->route('halaman.index')->with('success', 'Data berhasil diperbarui');
+    // Periksa apakah halaman ditemukan
+    if (!$halaman) {
+        return redirect()->route('halaman.index')->with('error', 'Data tidak ditemukan');
     }
+
+    // Simpan gambar jika ada perubahan gambar
+    if ($request->file('gambar')) {
+        // Hapus gambar lama jika ada
+        Storage::delete($halaman->gambar);
+
+        // Simpan gambar baru
+        $gambarPath = $request->file('gambar')->store('gambar');
+        $halaman->gambar = $gambarPath;
+    }
+
+    // Update data pada halaman
+    $halaman->update([
+        'nama' => $request->nama,
+        'alamat' => $request->alamat,
+        'kontak' => $request->kontak,
+        'dataDiri' => $request->dataDiri,
+    ]);
+
+    // Periksa apakah riwayatPekerjaan ada dan memiliki data
+    if ($request->has('riwayatPekerjaan') && is_array($request->riwayatPekerjaan)) {
+        // Hapus semua riwayat pekerjaan yang terkait dengan halaman ini
+        RiwayatPekerjaan::where('halaman_id', $halaman->id)->delete();
+
+        // Simpan data riwayat pekerjaan yang baru
+        foreach ($request->riwayatPekerjaan as $pekerjaan) {
+            RiwayatPekerjaan::create([
+                'halaman_id' => $halaman->id,
+                'tgl_mulai' => $pekerjaan['tgl_mulai'],
+                'tgl_akhir' => $pekerjaan['tgl_akhir'],
+                'namaPerusahaan' => $pekerjaan['namaPerusahaan'],
+                'domisilPerusahaan' => $pekerjaan['domisilPerusahaan'],
+                'jabatan' => $pekerjaan['jabatan'],
+            ]);
+        }
+    }
+
+    if ($request->has('skills') && is_array($request->skills)) {
+        // Hapus semua skills yang terkait dengan halaman ini
+        Skill::where('halaman_id', $halaman->id)->delete();
+
+        // Simpan data skills yang baru
+        foreach ($request->skills as $skill) {
+            Skill::create([
+                'halaman_id' => $halaman->id,
+                'namaSkill' => $skill['namaSkill'],
+                'tingkatanSkill' => $skill['tingkatanSkill'],
+            ]);
+        }
+    }
+
+
+    return redirect()->route('halaman.index')->with('success', 'Data berhasil diperbarui');
+}
+
 
     /**
      * Remove the specified resource from storage.

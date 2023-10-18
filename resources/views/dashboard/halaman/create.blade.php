@@ -68,9 +68,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="softskill" class="form-label">Soft Skill</label>
-        <textarea class="form-control" rows="3" name="hardskill"></textarea>
-        <label for="hardskill" class="form-label">Hard Skills</label>
+        <label for="hardskill" class="form-label">Skills</label>
         <table class="table">
             <thead>
                 <tr>
@@ -85,7 +83,7 @@
                 </tr>
             </tbody>
         </table>
-        <button type="button" class="btn btn-secondary" id="tambahSoftSkill">Tambah Soft Skill</button>
+        <button type="button" class="btn btn-secondary" id="tambahSoftSkill">Tambah skill</button>
     </div>
 
     <div class="mb-3">
