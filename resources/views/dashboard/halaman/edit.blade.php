@@ -3,7 +3,7 @@
 @section('konten')
 <div class="pb-3"><a href="{{ route('halaman.index') }}" class="btn btn-secondary">Kembali</a></div>
 
-<form action="{{ route('halaman.update', ['id' => $halaman->id]) }}" method="post" enctype="multipart/form-data">
+<form  action="{{ route('halaman.update', ['id' => $halaman->id]) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -34,11 +34,11 @@
                 </tr>
             </thead>
             <tbody id="Pendidikan">
-                @foreach ($riwayatPendidikan as $pendidikan)
+                @foreach ($riwayatPendidikan as $index => $pendidikan)
                     <tr>
-                        <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $pendidikan['id'] }}][namaSekolah]" placeholder="Nama Sekolah/Universitas" value="{{ $pendidikan -> namaSekolah }}" required></td>
-                        <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $pendidikan['id'] }}][thn_mulai]" placeholder="Tahun Masuk" value="{{ $pendidikan -> thn_mulai }}" required></td>
-                        <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $pendidikan['id'] }}][thn_akhir]" placeholder="Tahun Keluar" value="{{ $pendidikan -> thn_akhir }}" required></td>
+                        <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $index }}][namaSekolah]" placeholder="Nama Sekolah/Universitas" value="{{ $pendidikan->namaSekolah }}" required></td>
+                        <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $index }}][thn_mulai]" placeholder="Tahun Masuk" value="{{ $pendidikan->thn_mulai }}" required></td>
+                        <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $index }}][thn_akhir]" placeholder="Tahun Keluar" value="{{ $pendidikan->thn_akhir }}" required></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -61,13 +61,13 @@
                 </tr>
             </thead>
             <tbody id="Pekerjaan">
-            @foreach ($riwayatPekerjaan as $pekerjaan)
+                @foreach ($riwayatPekerjaan as $index => $pekerjaan)
                     <tr>
-                        <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][namaPerusahaan]" placeholder="Nama Perusahaan" value="{{ $pekerjaan->namaPerusahaan }}" required></td>
-                        <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][domisilPerusahaan]" placeholder="Domisili Perusahaan" value="{{ $pekerjaan->domisilPerusahaan }}" required></td>
-                        <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][jabatan]" placeholder="Jabatan" value="{{ $pekerjaan->jabatan }}" required></td>
-                        <td><input type="date" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][tgl_mulai]" value="{{ $pekerjaan->tgl_mulai }}" required></td>
-                        <td><input type="date" class="form-control" name="riwayatPekerjaan[{{ $pekerjaan->id }}][tgl_akhir]" value="{{ $pekerjaan->tgl_akhir }}" required></td>
+                        <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $index }}][namaPerusahaan]" placeholder="Nama Perusahaan" value="{{ $pekerjaan->namaPerusahaan }}" required></td>
+                        <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $index }}][domisilPerusahaan]" placeholder="Domisili Perusahaan" value="{{ $pekerjaan->domisilPerusahaan }}" required></td>
+                        <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $index }}][jabatan]" placeholder="Jabatan" value="{{ $pekerjaan->jabatan }}" required></td>
+                        <td><input type="date" class="form-control" name="riwayatPekerjaan[{{ $index }}][tgl_mulai]" value="{{ $pekerjaan->tgl_mulai }}" required></td>
+                        <td><input type="date" class="form-control" name="riwayatPekerjaan[{{ $index }}][tgl_akhir]" value="{{ $pekerjaan->tgl_akhir }}" required></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -85,22 +85,21 @@
                 </tr>
             </thead>
             <tbody id="hardSkill">
-                @foreach($skills as $index => $skill)
+            @foreach($skills as $index => $skill)
                 <tr>
-                    <td><input type="text" class="form-control" name="skills[{{ $index }}][id]" value="{{ $skill->id }}" style="display:none;"> <!-- Menyimpan ID skill yang sudah ada -->
-                        <input type="text" class="form-control" name="skills[{{ $index }}][namaSkill]" value="{{ $skill->namaSkill }}" placeholder="Nama Skill" required></td>
+                    <td><input type="text" class="form-control" name="skills[{{ $index }}][namaSkill]" value="{{ $skill->namaSkill }}" placeholder="Nama Skill" required></td>
                     <td><input type="number" class="form-control" name="skills[{{ $index }}][tingkatanSkill]" value="{{ $skill->tingkatanSkill }}" placeholder="Tingkat (%) (0-100)" required></td>
                 </tr>
-                @endforeach
+            @endforeach
             </tbody>
         </table>
         <button type="button" class="btn btn-secondary" id="tambahHardSkill">Tambah skill</button>
     </div>
 
-        <div\ class="mb-3">
-            <label for="dataDiri" class="form-label">Deskripsi Diri</label>
-            <textarea class="form-control" rows="5" name="dataDiri" value="{{ $halaman->dataDiri }}"></textarea>
-        </div>
+    <div class="mb-3">
+        <label for="dataDiri" class="form-label">Deskripsi Diri</label>
+        <textarea class="form-control" rows="5" name="dataDiri">{{ $halaman->dataDiri }}</textarea>
+    </div>
 
         <button class="btn btn-primary" name="simpan" type="submit">UPDATE</button>
     </div>

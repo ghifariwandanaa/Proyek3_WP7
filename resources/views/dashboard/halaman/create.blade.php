@@ -83,12 +83,19 @@
                 </tr>
             </tbody>
         </table>
-        <button type="button" class="btn btn-secondary" id="tambahSoftSkill">Tambah skill</button>
+        <button type="button" class="btn btn-secondary" id="tambahSkill">Tambah skill</button>
     </div>
+
+    <!-- <div class="mb-3"> 
+        
+    </div> -->
 
     <div class="mb-3">
         <label for="gambar" class="form-label">Gambar</label>
         <input type="file" class="form-control" name="gambar" id="gambar">
+
+        <label for="portofolio" class='form-label'> portofolio </label>
+        <input type="file" class='form-control' name=portofolio id=portofolio>
     </div>
 
     <div class="mb-3">
@@ -130,7 +137,7 @@
 
     let hardSkillIndex = 1;
 
-    document.getElementById('tambahSoftSkill').addEventListener('click', function() {
+    document.getElementById('tambahSkill').addEventListener('click', function() {
         let newRow = document.createElement('tr');
         newRow.innerHTML = `
             <td><input type="text" class="form-control" name="hardSkills[${hardSkillIndex}][namaSkill]" placeholder="Nama Skill" required></td>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('kontak');
             $table->text('dataDiri');
+            $table->string('portofolio');
             $table->string('gambar');
             $table->timestamps();
         });
@@ -44,7 +45,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('halaman_id')->constrained('halaman');
             $table->string('namaSkill');
-            $table->integer('tingkatanSkill'); // Menggunakan tipe data integer, bukan 'int'
+            $table->integer('tingkatanSkill'); 
             $table->timestamps();
         });
 
