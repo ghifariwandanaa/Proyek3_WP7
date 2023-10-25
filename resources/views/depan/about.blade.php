@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="left-container" href="/dashboard/depan">Back to </a>
+                    <a class="left-container" href="/dashboard/depan"> << Back to </a>
                     <p class="left-container" href="/dashboard/depan">Dashboard</p>
                 </li>
             </ul>
@@ -58,7 +58,7 @@
         <ul class="skills_list description">
         @foreach ($data['keahlian'] as $keahlian)
         <tr>
-            <td>{{ $keahlian->namaSkill }}</td>
+            <p>{{ $keahlian->namaSkill }}</td>
             <td item_title> : {{ $keahlian->tingkatanSkill }} %</td>
         </tr>
         @endforeach

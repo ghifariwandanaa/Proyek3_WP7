@@ -7,15 +7,15 @@
     <table class="table table-stripped">
         <thead>
             <th class="col-1">No</th>
-            <th>Judul</th>
+            <th class="col-9">Judul</th>
             <th class="col-2">Aksi</th>
         </thead>
         <tbody>
             <?php $i=1;?>
             @foreach ($data as $item)
             <tr>
-                <td><img src="{{asset('storage/' . $item->gambar) }}" alt=""></td>
-                <td>{{$item->nama}}</td>
+                <td><img src="{{asset('storage/' . $item->gambar) }}" alt="" width="100"></td>
+                <td class="col-3">{{$item->nama}}</td>
                 <td>
                     <a href="{{ route('halaman.edit', $item->id) }}" class="btn btn-sm btn-secondary">Edit</a>
                     <form onsubmit="return confirm('Yakin ingin menghapus data ini?')
