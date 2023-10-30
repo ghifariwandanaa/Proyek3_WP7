@@ -93,7 +93,7 @@
             @endforeach
             </tbody>
         </table>
-        <button type="button" class="btn btn-secondary" id="tambahHardSkill">Tambah skill</button>
+        <button type="button" class="btn btn-secondary" id="tambahSkill">Tambah skill</button>
     </div>
 
     <div class="mb-3">
@@ -103,50 +103,52 @@
 
         <button class="btn btn-primary" name="simpan" type="submit">UPDATE</button>
     </div>
-
-    <script>
-        let riwayatPekerjaanIndex = 1;
-
-        document.getElementById('tambahRiwayatPekerjaan').addEventListener('click', function() {
-            let newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][namaPerusahaan]" placeholder="Nama Perusahaan" required></td>
-                <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][domisilPerusahaan]" placeholder="Domisili Perusahaan" required></td>
-                <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][jabatan]" placeholder="Jabatan" required></td>
-                <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_mulai]" required></td>
-                <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_akhir]" required></td>
-            `;
-            document.getElementById('Pekerjaan').appendChild(newRow);
-            riwayatPekerjaanIndex++;
-        });
-
-        let riwayatPendidikanIndex = 1;
-
-        document.getElementById('tambahRiwayatPendidikan').addEventListener('click', function() {
-            let newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][namaSekolah]" placeholder="Nama Sekolah/Universitas" required></td>
-                <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_mulai]" placeholder="Tahun Masuk" required></td>
-                <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_akhir]" placeholder="Tahun Keluar" required></td>
-            `;
-            document.getElementById('Pendidikan').appendChild(newRow);
-            riwayatPekerjaanIndex++;
-        });
-
-        let hardSkillIndex = 1;
-
-        document.getElementById('tambahHardSkill').addEventListener('click', function() {
-            let newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td><input type="text" class="form-control" name="hardSkills[${hardSkillIndex}][namaSkill]" placeholder="Nama Skill" required></td>
-                <td><input type="number" class="form-control" name="hardSkills[${hardSkillIndex}][tingkatanSkill]" placeholder="Tingkat (%) (0-100)" required></td>
-            `;
-            document.getElementById('hardSkill').appendChild(newRow);
-            hardSkillIndex++;
-        });
-
-    </script>
-
 </form>
+
+<script>
+    let riwayatPekerjaanIndex = {{ count($riwayatPekerjaan) }};
+
+    document.getElementById('tambahRiwayatPekerjaan').addEventListener('click', function() {
+        let newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][namaPerusahaan]" placeholder="Nama Perusahaan" required></td>
+            <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][domisilPerusahaan]" placeholder="Domisili Perusahaan" required></td>
+            <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][jabatan]" placeholder="Jabatan" required></td>
+            <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_mulai]" required></td>
+            <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_akhir]" required></td>
+        `;
+        document.getElementById('Pekerjaan').appendChild(newRow);
+        riwayatPekerjaanIndex++;
+    });
+
+    let riwayatPendidikanIndex = {{ count($riwayatPendidikan) }};
+    document.getElementById('tambahRiwayatPendidikan').addEventListener('click', function() {
+        let newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][namaSekolah]" placeholder="Nama Sekolah/Universitas" required></td>
+            <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_mulai]" placeholder="Tahun Masuk" required></td>
+            <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_akhir]" placeholder="Tahun Keluar" required></td>
+        `;
+        document.getElementById('Pendidikan').appendChild(newRow);
+        riwayatPekerjaanIndex++;
+    });
+
+    let hardSkillIndex = {{ count($skills) }};
+    // console.log("Nilai dari hardSkillIndex adalah: " + hardSkillIndex);
+    document.getElementById('tambahSkill').addEventListener('click', function() {
+        let newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><input type="text" class="form-control" name="skills[${hardSkillIndex}][namaSkill]" placeholder="Nama Skill" required></td>
+            <td><input type="number" class="form-control" name="skills[${hardSkillIndex}][tingkatanSkill]" placeholder="Tingkat (%) (0-100)" required></td>
+        `;
+        document.getElementById('hardSkill').appendChild(newRow);
+        hardSkillIndex++;
+    });
+
+
+
+
+
+</script>
 </div>
 @endsection

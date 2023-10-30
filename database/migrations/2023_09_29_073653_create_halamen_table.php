@@ -16,8 +16,13 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('kontak');
             $table->text('dataDiri');
-            $table->string('portofolio');
             $table->string('gambar');
+            $table->timestamps();
+        });
+
+        Schema::create('portofolio', function (Blueprint $table) {
+            $table->foreignId('halaman_id')->constrained('halaman');
+            $table->string('portofolio');
             $table->timestamps();
         });
 
@@ -57,6 +62,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('halaman');
+        Schema::dropIfExists('portofolio');
         Schema::dropIfExists('riwayat_pekerjaan');
         Schema::dropIfExists('riwayat_pendidikan');
         Schema::dropIfExists('skills');

@@ -5,11 +5,6 @@
 <div class="pb-3"><a href="{{route('halaman.create')}}"class="btn btn-primary">+ Tambah Halaman</a></div>
 <div class="table-responsive">
     <table class="table table-stripped">
-        <thead>
-            <th class="col-1">No</th>
-            <th class="col-9">Judul</th>
-            <th class="col-2">Aksi</th>
-        </thead>
         <tbody>
             <?php $i=1;?>
             @foreach ($data as $item)
@@ -17,16 +12,16 @@
                 <td><img src="{{asset('storage/' . $item->gambar) }}" alt="" width="100"></td>
                 <td class="col-3">{{$item->nama}}</td>
                 <td>
-                    <a href="{{ route('halaman.edit', $item->id) }}" class="btn btn-sm btn-secondary">Edit</a>
-                    <form onsubmit="return confirm('Yakin ingin menghapus data ini?')
-                    "
-                        action="{{ route('halaman.destroy', $item->id)}}"
-                        class="d-inline" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-sm btn-danger" type="submit"
-                        name='submit'>Del</button>
-                    </form>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        <a href="{{ route('halaman.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                        <form onsubmit="return confirm('Yakin ingin menghapus data ini?')"
+                            action="{{ route('halaman.destroy', $item->id)}}" class="d-inline" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit" name='submit'>Del</button>
+                        </form>
+                    </div>
+
                 </td>
             </tr>
             <?php $i++;?>

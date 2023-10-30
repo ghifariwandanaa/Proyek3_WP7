@@ -94,9 +94,10 @@
         <label for="gambar" class="form-label">Gambar</label>
         <input type="file" class="form-control" name="gambar" id="gambar">
 
-        <label for="portofolio" class='form-label'> portofolio </label>
-        <input type="file" class='form-control' name=portofolio id=portofolio>
+        <label for="portofolio" class="form-label">Portofolio</label>
+        <input type="file" class="form-control" name="portofolio[]" id="portofolio" multiple>
     </div>
+
 
     <div class="mb-3">
         <label for="dataDiri" class="form-label">Deskripsi Diri</label>

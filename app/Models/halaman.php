@@ -9,5 +9,5 @@ class halaman extends Model
 {
     use HasFactory;
     protected $table = "halaman";
-    protected $fillable = ['nama', 'alamat','kontak','dataDiri','gambar','portofolio'];
+    protected $fillable = ['nama', 'alamat','kontak','dataDiri','gambar'];
 }
