@@ -1,25 +1,25 @@
 @extends('dashboard.layout')
 
 @section('konten')
-<div class="pb-3"><a href="{{ route('halaman.index') }}" class="btn btn-secondary">Kembali</a></div>
+<div class="pb-3"><a href="{{ route('profile.index') }}" class="btn btn-secondary">Kembali</a></div>
 
-<form  action="{{ route('halaman.update', ['id' => $halaman->id]) }}" method="post" enctype="multipart/form-data">
+<form  action="{{ route('profile.update', ['id' => $profile->id]) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
     <div class="mb-3">
         <label for="nama" class="form-label">Nama</label>
-        <input type="text" class="form-control" name="nama" id="nama" aria-describedby="helpId" placeholder="Nama" value="{{ $halaman->nama }}">
+        <input type="text" class="form-control" name="nama" id="nama" aria-describedby="helpId" placeholder="Nama" value="{{ $profile->nama }}">
     </div>
 
     <div class="mb-3">
         <label for="alamat" class="form-label">Alamat</label>
-        <input type="text" class="form-control form-control sm" name="alamat" id="alamat" aria-describedby="helpId" placeholder="Alamat" value="{{ $halaman->alamat }}">
+        <input type="text" class="form-control form-control sm" name="alamat" id="alamat" aria-describedby="helpId" placeholder="Alamat" value="{{ $profile->alamat }}">
     </div>
 
     <div class="mb-3">
         <label for="kontak" class="form-label">Kontak</label>
-        <input type="text" class="form-control form-control sm" name="kontak" id="kontak" aria-describedby="helpId" placeholder="Kontak" value="{{ $halaman->kontak }}">
+        <input type="text" class="form-control form-control sm" name="kontak" id="kontak" aria-describedby="helpId" placeholder="Kontak" value="{{ $profile->kontak }}">
     </div>
 
     <!-- Riwayat Pendidikan -->
@@ -98,7 +98,7 @@
 
     <div class="mb-3">
         <label for="dataDiri" class="form-label">Deskripsi Diri</label>
-        <textarea class="form-control" rows="5" name="dataDiri">{{ $halaman->dataDiri }}</textarea>
+        <textarea class="form-control" rows="5" name="dataDiri">{{ $profile->dataDiri }}</textarea>
     </div>
 
         <button class="btn btn-primary" name="simpan" type="submit">UPDATE</button>

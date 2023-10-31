@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\halaman;
+use App\Models\profile;
 use App\Models\Portofolio;
 use App\Models\RiwayatPekerjaan;
 use App\Models\RiwayatPendidikan;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 
-class halamanController extends Controller
+class profileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = halaman::orderBy('nama','asc')->get();
-        return view ('dashboard.halaman.index')->with('data',$data);
+        $data = profile::orderBy('nama','asc')->get();
+        return view ('dashboard.profile.index')->with('data',$data);
     }
 
     /**
@@ -25,7 +25,7 @@ class halamanController extends Controller
      */
     public function create()
     {
-        return view('dashboard.halaman.create');
+        return view('dashboard.profile.create');
     }
 
     /**
@@ -61,14 +61,14 @@ class halamanController extends Controller
             'riwayatPekerjaan.*.jabatan.required' => 'jabatan  pada Riwayat Pekerjaan Wajib Diisi',
         ]);
     
-        // Simpan data dalam tabel 'halaman'
+        // Simpan data dalam tabel 'profile'
         if ($request->file('gambar')) {
             $gambar = $request->file('gambar');
             $gambarPath = $gambar->store('gambar');
         }
 
 
-        $halaman = Halaman::create([
+        $profile = profile::create([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
@@ -81,7 +81,7 @@ class halamanController extends Controller
             $path = $file->store('portofolio');
 
             Portofolio::create([
-                'halaman_id' => $halaman->id,
+                'profile_id' => $profile->id,
                 'portofolio' => $path,
             ]);
         }
@@ -89,7 +89,7 @@ class halamanController extends Controller
         // Simpan data dalam tabel 'riwayat_pekerjaan'
         foreach ($request->riwayatPekerjaan as $pekerjaan) {
             RiwayatPekerjaan::create([
-                'halaman_id' => $halaman->id,
+                'profile_id' => $profile->id,
                 'tgl_mulai' => $pekerjaan['tgl_mulai'],
                 'tgl_akhir' => $pekerjaan['tgl_akhir'],
                 'namaPerusahaan' => $pekerjaan['namaPerusahaan'],
@@ -101,7 +101,7 @@ class halamanController extends Controller
         //simpan data riwayat pendidikan
         foreach ($request->riwayatPendidikan as $pendidikan) {
             RiwayatPendidikan::create([
-                'halaman_id' => $halaman->id,
+                'profile_id' => $profile->id,
                 'thn_mulai' => $pendidikan['thn_mulai'],
                 'thn_akhir' => $pendidikan['thn_akhir'],
                 'namaSekolah' => $pendidikan['namaSekolah'],
@@ -111,13 +111,13 @@ class halamanController extends Controller
         // Simpan data dalam tabel 'Skill'
         foreach ($request->hardSkills as $skill) {
             Skill::create([
-                'halaman_id' => $halaman->id,
+                'profile_id' => $profile->id,
                 'namaSkill' => $skill['namaSkill'],
                 'tingkatanSkill' => $skill['tingkatanSkill'],
             ]);
         }
     
-        return redirect()->route('halaman.index')->with('berhasil','data berhasil ditambahkan');
+        return redirect()->route('profile.index')->with('berhasil','data berhasil ditambahkan');
     }
 
 
@@ -134,21 +134,21 @@ class halamanController extends Controller
      */
     public function edit(string $id)
     {
-        $halaman = Halaman::find($id);
+        $profile = profile::find($id);
 
-        if (!$halaman) {
-            return redirect()->route('halaman.index')->with('error', 'Data tidak ditemukan');
+        if (!$profile) {
+            return redirect()->route('profile.index')->with('error', 'Data tidak ditemukan');
         }
 
-        $riwayatPendidikan = RiwayatPendidikan::where('halaman_id', $halaman->id)->get();
+        $riwayatPendidikan = RiwayatPendidikan::where('profile_id', $profile->id)->get();
 
         // Ambil semua riwayat pekerjaan yang terkait dengan halaman ini
-        $riwayatPekerjaan = RiwayatPekerjaan::where('halaman_id', $halaman->id)->get();
+        $riwayatPekerjaan = RiwayatPekerjaan::where('profile_id', $profile->id)->get();
         
         // Ambil data keahlian (skills) yang terkait dengan halaman ini
-        $skills = Skill::where('halaman_id', $halaman->id)->get();
+        $skills = Skill::where('profile_id', $profile->id)->get();
 
-        return view('dashboard.halaman.edit', compact('halaman', 'riwayatPekerjaan', 'skills',  'riwayatPendidikan'));
+        return view('dashboard.profile.edit', compact('profile', 'riwayatPekerjaan', 'skills',  'riwayatPendidikan'));
     }
 
 
@@ -184,8 +184,8 @@ class halamanController extends Controller
             'skills.*.tingkatanSkill.between' => 'Tingkatan Keahlian harus antara 0 dan 100',
         ]);
 
-        $halaman = Halaman::find($id);
-        $halaman->update([
+        $profile = profile::find($id);
+        $profile->update([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
@@ -198,7 +198,7 @@ class halamanController extends Controller
             RiwayatPekerjaan::updateOrCreate(
                 // ['id' => $pekerjaan['id']], // Kriteria pencarian berdasarkan ID (jika ID ada)
                 [
-                    'halaman_id' => $halaman->id,
+                    'profile_id' => $profile->id,
                     'tgl_mulai' => $pekerjaan['tgl_mulai'],
                     'tgl_akhir' => $pekerjaan['tgl_akhir'],
                     'namaPerusahaan' => $pekerjaan['namaPerusahaan'],
@@ -213,7 +213,7 @@ class halamanController extends Controller
             RiwayatPendidikan::updateOrCreate(
                 // ['id' => $pendidikan['id']], // Kriteria pencarian berdasarkan ID (jika ID ada)
                 [
-                    'halaman_id' => $halaman->id,
+                    'profile_id' => $profile->id,
                     'thn_mulai' => $pendidikan['thn_mulai'],
                     'thn_akhir' => $pendidikan['thn_akhir'],
                     'namaSekolah' => $pendidikan['namaSekolah'],
@@ -226,7 +226,7 @@ class halamanController extends Controller
             Skill::updateOrCreate(
                 // ['id' => $skill['id']], // Kriteria pencarian berdasarkan ID (jika ID ada)
                 [
-                    'halaman_id' => $halaman->id,
+                    'profile_id' => $profile->id,
                     'namaSkill' => $skill['namaSkill'],
                     'tingkatanSkill' => $skill['tingkatanSkill'],
                 ]
@@ -234,7 +234,7 @@ class halamanController extends Controller
         }
 
     
-        return redirect()->route('halaman.index')->with('success', 'Data berhasil diperbarui.');
+        return redirect()->route('profile.index')->with('success', 'Data berhasil diperbarui.');
     }
 
 
@@ -243,24 +243,24 @@ class halamanController extends Controller
      */
     public function destroy(string $id)
     {
-        $halaman = halaman::find($id);
+        $profile = profile::find($id);
 
-        if (!$halaman) {
-            return redirect()->route('halaman.index')->with('error', 'Data tidak ditemukan');
+        if (!$profile) {
+            return redirect()->route('profile.index')->with('error', 'Data tidak ditemukan');
         }
 
         // Hapus semua riwayat pekerjaan yang terkait dengan halaman ini
-        RiwayatPekerjaan::where('halaman_id', $halaman->id)->delete();
+        RiwayatPekerjaan::where('profile_id', $profile->id)->delete();
 
         // Hapus semua riwayat pendidikan yang terkait dengan halaman ini
-        RiwayatPendidikan::where('halaman_id', $halaman->id)->delete();
+        RiwayatPendidikan::where('profile_id', $profile->id)->delete();
 
         // Hapus catatan terkait di tabel 'skills' secara manual
-        Skill::where('halaman_id', $halaman->id)->delete();
+        Skill::where('profile_id', $profile->id)->delete();
 
         // Hapus halaman itu sendiri
-        $halaman->delete();
+        $profile->delete();
 
-        return redirect()->route('halaman.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('profile.index')->with('success', 'Data berhasil dihapus');
     }
 }

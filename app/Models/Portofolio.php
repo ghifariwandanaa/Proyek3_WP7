@@ -10,15 +10,14 @@ class Portofolio extends Model
     use HasFactory;
 
     protected $table = "portofolio";
-
     protected $fillable = [
-        'halaman_id',
+        'profile_id',
         'portofolio',
     ];
 
-    public function halaman()
+    public function profile()
     {
-        return $this->belongsTo(Halaman::class, 'halaman_id');
+        return $this->belongsTo(profile::class, 'profile_id');
     }
 
 }

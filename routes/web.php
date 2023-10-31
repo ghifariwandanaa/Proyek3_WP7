@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\halamanController;
+use App\Http\Controllers\profileController;
 use App\Http\Controllers\DepanController;
 
 
@@ -24,8 +24,8 @@ Route::redirect('home','dashboard');
 
 Route::prefix('dashboard')->group(
     function(){
-        Route::get('/',[halamanController::class,'index']);
-        Route::resource('halaman',halamanController::class);
+        Route::get('/',[profileController::class,'index']);
+        Route::resource('profile',profileController::class);
         Route::resource('depan',DepanController::class);
 
     }
@@ -35,7 +35,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/halaman/{id}/edit', [HalamanController::class, 'edit'])->name('halaman.edit');
-Route::put('/halaman/{id}', [HalamanController::class, 'update'])->name('halaman.update');
+Route::get('/profile/{id}/edit', [profileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/{id}', [profileController::class, 'update'])->name('profile.update');
 Route::get('/depan/about', [DepanController::class, 'about'])->name('depan.about');
 Route::get('/depan/about/{id}', [DepanController::class, 'show'])->name('depan.about.show');

@@ -41,12 +41,12 @@
         </div>
         <div>
           <h1 class="profile_name">
-            <span class="profile_name_lastName">{{ $data['halaman']->nama }}</span>
+            <span class="profile_name_lastName">{{ $data['profile']->nama }}</span>
             
           </h1>
           <p class="profile_title">DESKRIPSI DIRI</p>
           <p class="description profile_description">
-          {{ $data['halaman']->dataDiri }}
+          {{ $data['profile']->dataDiri }}
           </p>
           <a class="downloadBtn" href="./cv.pdf" download="Resume.pdf">Download Resume</a>
         </div>
@@ -102,7 +102,7 @@
         <h3 class="title">Kontak</h3>
         <div class="contact_info">
           <p class="description">
-          {{ $data['halaman']->kontak }}
+          {{ $data['profile']->kontak }}
           </p>
         </div>
       </div>
@@ -110,7 +110,7 @@
         <h3 class="title">Alamat</h3>
           <a href="#" target="_b" class="social_item">
             <i data-feather="github"></i>
-            <span>{{ $data['halaman']->alamat }}</span>
+            <span>{{ $data['profile']->alamat }}</span>
           </a>
         </div>
       </div>

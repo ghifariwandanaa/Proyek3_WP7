@@ -12,14 +12,14 @@ class RiwayatPendidikan extends Model
     protected $table = "riwayat_pendidikan";
 
     protected $fillable = [
-        'halaman_id',
+        'profile_id',
         'thn_mulai',
         'thn_akhir',
         'namaSekolah',
     ];
 
-    public function halaman()
+    public function profile()
     {
-        return $this->belongsTo(Halaman::class, 'halaman_id');
+        return $this->belongsTo(profile::class, 'profile_id');
     }
 }

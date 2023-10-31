@@ -33,7 +33,7 @@
             <p class="par">Website ini menyediakan akses tempat untuk personal branding anda. <br> Beberapa perusahaan akan mencari anda, persiapkan Curriculum Vitae sebagus mungkin!
                 <br></p>
 
-                <button class="cn"><a href="{{route('halaman.index')}}">JOIN US</a></button>
+                <button class="cn"><a href="{{route('profile.index')}}">JOIN US</a></button>
 
                 <div class="form">
                     <h2>Login Here</h2>

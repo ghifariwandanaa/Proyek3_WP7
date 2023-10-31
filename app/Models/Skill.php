@@ -12,15 +12,15 @@ class skill extends Model
     protected $table = "skills";
 
     protected $fillable = [
-        'halaman_id',
+        'profile_id',
         'namaSkill',
         'tingkatanSkill',
     ];
 
 
-    public function halaman()
+    public function profile()
     {
-        return $this->belongsTo(Halaman::class, 'halaman_id');
+        return $this->belongsTo(profile::class, 'profile_id');
     }
     
 }

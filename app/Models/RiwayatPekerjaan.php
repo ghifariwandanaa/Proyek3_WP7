@@ -11,7 +11,7 @@ class RiwayatPekerjaan extends Model
     protected $table = "riwayat_pekerjaan";
 
     protected $fillable = [
-        'halaman_id',
+        'profile_id',
         'tgl_mulai',
         'tgl_akhir',
         'namaPerusahaan',
@@ -19,8 +19,8 @@ class RiwayatPekerjaan extends Model
         'jabatan',
     ];
 
-    public function halaman()
+    public function profile()
     {
-        return $this->belongsTo(Halaman::class, 'halaman_id');
+        return $this->belongsTo(profile::class, 'profile_id');
     }
 }

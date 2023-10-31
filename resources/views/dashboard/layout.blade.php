@@ -35,9 +35,13 @@
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-              <img src="{{asset('admin')}}/images/faces/face5.jpg" alt="profile"/>
+              <img src="{{asset('admin')}}/images/faces/OIP.jpg" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item" href="#">
+                <i class="mdi mdi-account text-primary"></i>
+                profile
+              </a>
               <a class="dropdown-item">
                 <i class="mdi mdi-settings text-primary"></i>
                 Settings
@@ -66,7 +70,7 @@
             </a>
           </li>            
           <li class="nav-item">
-            <a class="nav-link" href="{{route('halaman.index')}}">
+            <a class="nav-link" href="{{route('profile.index')}}">
               <i class="mdi mdi-file-document-box-outline menu-icon"></i>
               <span class="menu-title">Edit Profil</span>
             </a>

@@ -10,7 +10,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('halaman', function (Blueprint $table) {
+        Schema::create('profile', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->string('alamat');
@@ -21,14 +21,14 @@ return new class extends Migration
         });
 
         Schema::create('portofolio', function (Blueprint $table) {
-            $table->foreignId('halaman_id')->constrained('halaman');
+            $table->foreignId('profile_id')->constrained('profile');
             $table->string('portofolio');
             $table->timestamps();
         });
 
         Schema::create('riwayat_pekerjaan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('halaman_id')->constrained('halaman');
+            $table->foreignId('profile_id')->constrained('profile');
             $table->date('tgl_mulai');
             $table->date('tgl_akhir');
             $table->string('namaPerusahaan');
@@ -39,7 +39,7 @@ return new class extends Migration
 
         Schema::create('riwayat_pendidikan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('halaman_id')->constrained('halaman');
+            $table->foreignId('profile_id')->constrained('profile');
             $table->string('thn_mulai');
             $table->string('thn_akhir');
             $table->string('namaSekolah');
@@ -48,7 +48,7 @@ return new class extends Migration
 
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('halaman_id')->constrained('halaman');
+            $table->foreignId('profile_id')->constrained('profile');
             $table->string('namaSkill');
             $table->integer('tingkatanSkill'); 
             $table->timestamps();
@@ -61,7 +61,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('halaman');
+        Schema::dropIfExists('profile');
         Schema::dropIfExists('portofolio');
         Schema::dropIfExists('riwayat_pekerjaan');
         Schema::dropIfExists('riwayat_pendidikan');
