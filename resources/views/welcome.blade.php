@@ -15,7 +15,8 @@
             <div class="menu">
                 <ul class>
                     <li><a href="aboutweb">ABOUT</a></li>
-                    <li><a href="cv">CV</a></li>
+                    <li><a href="{{ route('cv.index') }}">CV</a></li>
+
                 </ul>
             </div>
 
@@ -35,11 +36,11 @@
                   <p>Anda dapat mengunduhnya dalam format PDF.</p>
                 </li>
                 <li>
-                  <p><strong>GRATIS:</strong></p>
+                  <p><strong>BUAT CV SECARA GRATIS:</strong></p>
                   <p>Anda dapat membuat CV Anda secara gratis.</p>
                 </li>
                 <li>
-                  <p><strong>MUDAH</strong></p>
+                  <p><strong>MEMBUAT DENGAN MUDAH</strong></p>
                   <p>Anda dapat dengan mudah membuat CV.</p>
                 </li>
             </ul>                  

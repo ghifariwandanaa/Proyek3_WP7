@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\DepanController;
+use App\Http\Controllers\ListController;
 
 
 /*
@@ -23,7 +24,10 @@ Route::redirect('home','dashboard');
 
 Route::view('aboutweb', 'welcome');
 
-Route::view('cv', 'listcv');
+Route::resource('cv', ListController::class);
+
+Route::get('/cv', [ListController::class, 'index'])->name('cv.index');
+
 
 Route::prefix('dashboard')->group(
     function(){

@@ -19,7 +19,25 @@
                 </ul>
             </div>
         </div>
-    </div>
+        <div class="content">
+            <h2 ><strong>List CV</strong></h2>
+            <table class="table table-stripped">
+                <tbody>
+                    <?php $i = 1; ?>
+                    @foreach ($data as $item)
+                    <tr>
+                        <td><img src="{{ asset('storage/' . $item->gambar) }}" alt="" width="100"></td>
+                        <td class="nama">{{ $item->nama }}</td>
+                        <td>
+                            <a href="{{ route('cv.show', ['cv' => $item->id]) }}" class="btn btn-primary btn-lg">Lihat</a>
+                        </td>
+                    </tr>
+                    <?php $i++; ?>
+                    @endforeach
+                </tbody>
+            </table>
+            
+        </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 </html>
