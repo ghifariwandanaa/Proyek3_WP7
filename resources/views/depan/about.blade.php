@@ -26,8 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="left-container" href="/dashboard/depan"> << Back to </a>
-                    <p class="left-container" href="/dashboard/depan">Dashboard</p>
+                    <a class="left-container" href="/dashboard/depan"><< Back to Dashboard</a>
                 </li>
             </ul>
         </div>
@@ -42,7 +41,6 @@
         <div>
           <h1 class="profile_name">
             <span class="profile_name_lastName">{{ $data['profile']->nama }}</span>
-            
           </h1>
           <p class="profile_title">DESKRIPSI DIRI</p>
           <p class="description profile_description">
@@ -91,13 +89,6 @@
                 <p class="item_subtitle">{{ $riwayatpk->jabatan }}</p>
             </tr>
       @endforeach
-        </div>
-    </div>
-    
-      </div>
-    </div>
-    <hr>
-    <div class="group-3">
       <div class="contact">
         <h3 class="title">Kontak</h3>
         <div class="contact_info">
@@ -114,7 +105,12 @@
           </a>
         </div>
       </div>
+        </div>
     </div>
+    
+      </div>
+    </div>
+    <hr>
   </div>
   <script>
     feather.replace()

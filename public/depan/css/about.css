@@ -9,15 +9,15 @@
   } */
 
   .left-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%; 
-    width: 150px; 
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-}
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 150px;
+	color: black;
+	padding: 20px;
+  }
+  
 
 
 * {
@@ -26,7 +26,7 @@
 	box-sizing: border-box;
 }
 :root {
-	--primary-color: #ff7613;
+	--primary-color: #fff;
 	--text-color: #727171;
 }
 html {
@@ -34,18 +34,20 @@ html {
 }
 body {
 	font-family: Inter, sans-serif;
-	background-color: black;
-	color: white;
+	background-color: fff;
+	color: black;
 }
 
 /* common styles */
 img {
 	width: 100%;
 }
+
 a {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
+
 .description {
 	margin-top: 1rem;
 	font-size: 1.5rem;
@@ -82,7 +84,7 @@ a {
 	margin: 0 auto;
 	display: grid;
 	padding: 5rem;
-	background: #070707;
+	background: linear-gradient(to bottom, #67755E, #fff);
 	grid-template-columns: 1fr 1fr;
 	gap: 4rem;
 }
