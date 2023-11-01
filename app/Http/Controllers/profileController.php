@@ -261,6 +261,6 @@ class profileController extends Controller
         // Hapus halaman itu sendiri
         $profile->delete();
 
-        return redirect()->route('profile.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('depan.dataprofil')->with('success', 'Data berhasil dihapus');
     }
 }

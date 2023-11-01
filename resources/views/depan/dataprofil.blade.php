@@ -12,7 +12,12 @@
                 <td class="col-9">{{$item->nama}}</td>
                 <td>
                     <a href="{{ route('depan.show', ['depan' => $item->id]) }}" class="btn btn-primary">Show</a>
-                    <button class="btn btn-danger" type="submit" name='submit'>Del</button>
+                    <form onsubmit="return confirm('Yakin ingin menghapus data ini?')"
+                        action="{{ route('profile.destroy', $item->id)}}" class="d-inline" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit" name='submit'>Del</button>
+                    </form>
                 </td>
             </tr>
             <?php $i++;?>

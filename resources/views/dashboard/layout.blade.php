@@ -15,9 +15,9 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{asset('admin')}}/css/style.css">
-  <link rel="stylesheet" href="{{asset('admin')}}welcome/css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{asset('admin')}}/images/favicon.png" />
+  @stack('styles')
 </head>
 <body>
   <div class="container-scroller">
@@ -38,8 +38,8 @@
       </div>
         <div class="menu">
             <tr class>
-                <td><a class="style_a" href="/">ABOUT</a></li>
-                <td><a class="style_a" href="#">CV</a></li>
+                <td><a class="style_a" href="aboutweb">ABOUT</a></li>
+                <td><a class="style_a" href="cv">CV</a></li>
             </tr>
         </div>
         <ul class="navbar-nav navbar-nav-right">
