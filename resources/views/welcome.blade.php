@@ -14,16 +14,35 @@
 
             <div class="menu">
                 <ul class>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">CV</a></li>
+                    <li><a href="aboutweb">ABOUT</a></li>
+                    <li><a href="cv">CV</a></li>
                 </ul>
             </div>
 
-        </div> 
+        </div>
         <div class="content">
-            <h1>Welcome to <br><span>Web Personal</span> <br>Profile</h1>
-            <p class="par">Website ini menyediakan akses tempat untuk personal branding anda. <br> Beberapa perusahaan akan mencari anda, persiapkan Curriculum Vitae sebagus mungkin!
+            <h1>Welcome to <br><span>Web Personal Profile</span> <br></h1>
+            <h2>About</h2>
+            <p class="par"> WPP adalah sebuah platform berbasis web yang dirancang 
+                khusus untuk membantu individu membuat Curriculum Vitae (CV) profesional mereka sendiri dengan mudah, cepat, dan efisien. 
+                Dengan "CV Creator," Anda dapat menghasilkan CV yang menarik dan berkualitas tinggi tanpa harus memiliki pengetahuan 
+                mendalam dalam desain grafis atau keahlian teknis lainnya.
                 <br></p>
+            <h2>Fitur</h2>
+            <ul class="par2">
+                <li>
+                  <p><strong> SIMPAN SEBAGAI PDF:</strong></p>
+                  <p>Anda dapat mengunduhnya dalam format PDF.</p>
+                </li>
+                <li>
+                  <p><strong>GRATIS:</strong></p>
+                  <p>Anda dapat membuat CV Anda secara gratis.</p>
+                </li>
+                <li>
+                  <p><strong>MUDAH</strong></p>
+                  <p>Anda dapat dengan mudah membuat CV.</p>
+                </li>
+            </ul>                  
         </div>
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

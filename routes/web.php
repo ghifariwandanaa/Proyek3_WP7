@@ -21,6 +21,9 @@ Route::get('/about', [DepanController::class, 'about'])->name('about');
 
 Route::redirect('home','dashboard');
 
+Route::view('aboutweb', 'welcome');
+
+Route::view('cv', 'listcv');
 
 Route::prefix('dashboard')->group(
     function(){
