@@ -13,18 +13,10 @@
             </div>
 
             <div class="menu">
-                <ul>
-                    <li><a href="#">HOME</a></li>
+                <ul class>
                     <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">SERVICE</a></li>
-                    <li><a href="#">DESIGN</a></li>
-                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="#">CV</a></li>
                 </ul>
-            </div>
-
-            <div class="search">
-                <input class="srch" type="search" name="" placeholder="Type To text">
-                <a href="#"> <button class="btn">Search</button></a>
             </div>
 
         </div> 
@@ -32,9 +24,6 @@
             <h1>Welcome to <br><span>Web Personal</span> <br>Profile</h1>
             <p class="par">Website ini menyediakan akses tempat untuk personal branding anda. <br> Beberapa perusahaan akan mencari anda, persiapkan Curriculum Vitae sebagus mungkin!
                 <br></p>
-
-                <button class="cn"><a href="{{route('profile.index')}}">JOIN US</a></button>
-
         </div>
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
