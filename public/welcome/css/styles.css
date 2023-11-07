@@ -350,3 +350,13 @@ ul li a:hover{
 .right-menu li {
   margin: 0 15px;
 }
+
+.content .nama {
+  padding-right: 500px;
+  font-family: arial;
+  font-size: 16px;
+  letter-spacing: 1.2px;
+  line-height: 30px;
+  color: #000000;
+  text-align: left;
+}
