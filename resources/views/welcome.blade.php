@@ -51,6 +51,22 @@
         </div>
         <div class="content">
             <h1>Welcome to <br><span>Web Personal Profile</span> <br></h1>
+
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="welcome/assets/img/1.jpg" class="d-block w-100" alt="..." width="500" height="500">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="welcome/assets/img/2.jpg" class="d-block w-100" alt="..." width="500" height="500">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="welcome/assets/img/3.jpg" class="d-block w-100" alt="..." width="500" height="500">
+                  </div>
+                </div>
+              </div>
+
+
             <h2>About</h2>
             <p class="par"> WPP adalah sebuah platform berbasis web yang dirancang
                 khusus untuk membantu individu membuat Curriculum Vitae (CV) profesional mereka sendiri dengan mudah, cepat, dan efisien.
@@ -60,11 +76,11 @@
             <h2>Fitur</h2>
             <ul class="par2">
                 <li>
-                    <p><strong> SIMPAN SEBAGAI PDF:</strong></p>
+                    <p><strong> SIMPAN SEBAGAI PDF</strong></p>
                     <p>Anda dapat mengunduhnya dalam format PDF.</p>
                 </li>
                 <li>
-                    <p><strong>BUAT CV SECARA GRATIS:</strong></p>
+                    <p><strong>MEMBUAT CV SECARA GRATIS</strong></p>
                     <p>Anda dapat membuat CV Anda secara gratis.</p>
                 </li>
                 <li>

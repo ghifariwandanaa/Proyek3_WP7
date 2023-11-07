@@ -8,7 +8,8 @@
   background-color:#F1EFEA ;
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: auto;
 }
 
 .navbar{
@@ -17,7 +18,6 @@
   margin: auto;
   background-color: #ffffff;
   background-position: center;
-  background-size: cover;
 }
 
 .navbar ul{
