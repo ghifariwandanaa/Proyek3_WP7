@@ -21,10 +21,9 @@
                             <button class="btn btn-danger" type="submit" name='submit'>Del</button>
                         </form>
                     </div>
-
                 </td>
             </tr>
-            <?php $i++;?>
+            <?php $i++;?>   
             @endforeach
            
         </tbody>

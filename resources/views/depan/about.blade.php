@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="left-container" href="/dashboard/depan"><< Back to Dashboard</a>
+                    <a class="left-container" href="/cv"><< Back to Dashboard</a>
                 </li>
             </ul>
         </div>
@@ -47,6 +47,7 @@
           {{ $data['profile']->dataDiri }}
           </p>
           <a class="downloadBtn" href="./cv.pdf" download="Resume.pdf">Download Resume</a>
+          <a href="/profile/1/edit" class="downloadBtn">Edit</a>
         </div>
       </div>
     </div>

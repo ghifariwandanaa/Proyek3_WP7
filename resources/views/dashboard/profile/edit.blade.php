@@ -1,7 +1,7 @@
 @extends('dashboard.layout')
 
 @section('konten')
-<div class="pb-3"><a href="{{ route('profile.index') }}" class="btn btn-secondary">Kembali</a></div>
+<div class="pb-3"><a href="/cv/1" class="btn btn-secondary">Kembali</a></div>
 
 <form  action="{{ route('profile.update', ['id' => $profile->id]) }}" method="post" enctype="multipart/form-data">
     @csrf

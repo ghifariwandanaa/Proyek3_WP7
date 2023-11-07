@@ -26,6 +26,4 @@ class DepanController extends Controller
         return view('depan.about', ['data' => ['profile' => $profile, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian ]]);
     }
 
-
-    
 }

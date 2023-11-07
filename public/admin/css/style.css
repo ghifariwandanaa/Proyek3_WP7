@@ -9268,6 +9268,7 @@ progress {
 .row {
   --bs-gutter-x: 20px;
   --bs-gutter-y: 0;
+  background-color: #F1EFEA ;
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
@@ -22383,6 +22384,7 @@ dl li {
 
 .main-panel {
   transition: width 0.25s ease, margin 0.25s ease;
+  background-color: #F1EFEA ;
   width: calc(100% - 257px);
   min-height: calc(100vh - 60px);
   display: -webkit-flex;
@@ -22399,7 +22401,7 @@ dl li {
 }
 
 .content-wrapper {
-  background: #f3f3f3;
+  background: ##F1EFEA ;
   padding: 2.1rem 1.04rem;
   width: 100%;
   -webkit-flex-grow: 1;

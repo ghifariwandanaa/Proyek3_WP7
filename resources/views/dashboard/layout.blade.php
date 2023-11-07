@@ -31,7 +31,7 @@
         <div class="menu">
           <tr class>
               <td><a class="style_a" href="/">ABOUT</a></td>
-              <td><a class="style_a" href="cv">CV</a></td>
+              <td><a class="style_a" href="/cv">CV</a></td>
           </tr>
         </div>
         <ul class="navbar-nav navbar-nav-right">
@@ -66,15 +66,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('depan.index') }}">
               <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-              <span class="menu-title">Data Profile</span>
+              <span class="menu-title">My Profile</span>
             </a>
           </li>            
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('profile.index') }}">
-              <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-              <span class="menu-title">Edit Profil</span>
-            </a>
-          </li>
         </ul>
       </nav>
       <div class="main-panel">
