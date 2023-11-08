@@ -38,7 +38,7 @@
         <div class="profile_profileImg">
           <img class="images" src="{{ asset('storage/' . $data['profile']->gambar) }}" alt="profile" />
           <a class="downloadBtn" href="./cv.pdf" download="Resume.pdf">Download Resume</a>
-          <a href="/profile/1/edit" class="downloadBtn">Edit</a>
+          <a href="{{ route('profile.edit', $data['profile']->id) }}" class="downloadBtn">Edit</a>
         </div>
         <div>
           <h1 class="profile_name">

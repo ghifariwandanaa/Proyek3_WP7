@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\DepanController;
 use App\Models\profile;
 use App\Models\Portofolio;
 use App\Models\RiwayatPekerjaan;
@@ -17,8 +18,19 @@ class profileController extends Controller
     public function index()
     {
         $data = profile::orderBy('nama','asc')->get();
-        return view ('dashboard.profile.index')->with('data',$data);
+        return view ('depan.dataprofil')->with('data',$data);
     }
+
+    public function cv($id)
+    {
+        $profile = profile::find($id);
+        $riwayatPekerjaan = RiwayatPekerjaan::where('profile_id', $profile->id)->get();
+        $riwayatPendidikan = RiwayatPendidikan::where('profile_id', $profile->id)->get();
+        $keahlian = Skill::where('profile_id', $profile->id)->get();
+
+        return view('depan.about', ['data' => ['profile' => $profile, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian ]]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -232,9 +244,7 @@ class profileController extends Controller
                 ]
             );
         }
-
-    
-        return redirect()->route('profile.index')->with('success', 'Data berhasil diperbarui.');
+        return redirect()->route('profile.cv', ['id' => $profile->id])->with('success', 'Data berhasil diperbarui.');
     }
 
 
