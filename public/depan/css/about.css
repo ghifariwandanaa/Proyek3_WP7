@@ -9,15 +9,13 @@
   } */
 
   .left-container {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 150px;
-	color: black;
-	padding: 20px;
-  }
-  
+    display: inline-block; /* Membuat kontainer menjadi elemen inline */
+    margin-right: 10px; /* Margin kanan untuk memberikan jarak dengan elemen lain jika perlu */
+    border: 1px solid #ccc; /* Contoh border untuk memberikan elemen tampilan yang jelas */
+    padding: 10px; /* Padding untuk memberikan ruang di dalam elemen */
+    background-color: #f0f0f0; /* Warna latar belakang */
+    text-align: center; /* Pusatkan elemen di dalam kontainer */
+}
 
 
 * {
@@ -55,7 +53,7 @@ a {
 	color: var(--text-color);
 }
 .title {
-	color: var(--primary-color);
+	color: #66727C;
 	font-weight: 700;
 	font-size: 2rem;
 	text-transform: uppercase;
@@ -102,9 +100,8 @@ a {
 }
 .group-1,
 .group-2 {
-	display: absolute;
-	flex-direction: column;
-	gap: 5rem;
+	flex-basis: calc(50% - 20px); /* Lebar 50% dengan jarak 20px */
+    margin-bottom: 20px; /* Jarak antar kelompok */
 }
 .group-3 {
 	max-width: 700px;
@@ -240,4 +237,36 @@ hr {
 	hr {
 		margin: 0 auto;
 	}
+}
+
+.images1 {
+    display: block; /* Mengubah elemen <a> menjadi elemen blok */
+    float: left; /* Membuat gambar berada di sebelah kiri */
+    margin-right: 10px; /* Margin kanan untuk memberikan jarak dengan elemen lain jika perlu */
+}
+
+.container1 {
+	max-width: 900px;
+	width: 90%;
+	margin: 0 auto;
+	display: grid;
+	padding: 5rem;
+	background: #fff;
+	grid-template-columns: 1fr 1fr;
+	gap: 4rem;
+}
+
+.skill-name {
+    font-weight: bold; /* Membuat teks nama keahlian menjadi tebal */
+    margin-right: 5px; /* Memberikan jarak kanan antara nama keahlian dan tingkatan */
+}
+
+.skill-percent {
+    color: #67755E; /* Mengubah warna tingkatan keahlian (misalnya, menjadi biru) */
+}
+
+.resume {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

@@ -26,19 +26,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="left-container" href="/cv">< Back to Dashboard</a>
+                    <a class="images1" href="/cv">
+                      <img src="{{ asset('admin') }}/images/faces/back.png" alt="profile" width="60" height="60"></a>
                 </li>
             </ul>
         </div>
     </nav>
     <!-- Isi dari Cv -->
-  <div class="container">
+  <div class="container">a
     <div class="profile">
       <div class="profile_container">
         <div class="profile_profileImg">
-          <img class="images" src="{{ asset('storage/' . $data['profile']->gambar) }}" alt="profile" />
-          <a class="downloadBtn" href="./cv.pdf" download="Resume.pdf">Download Resume</a>
-          <a href="/profile/1/edit" class="downloadBtn">Edit</a>
+        <img class="images" src="{{ asset('storage/' . $data['profile']->gambar) }}" alt="profile" />
+        <a class="downloadBtn" href="./cv.pdf" download="Resume.pdf">Download Resume</a>
+        <a href="/profile/1/edit" class="downloadBtn">Edit</a>
         </div>
         <div>
           <h1 class="profile_name">
@@ -51,18 +52,11 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="container1">
+    <div class="profile">
     <div class="group-1">
-      <div class="skills">
-        <h3 class="title">Keahlian</h3>
-        <ul class="skills_list description">
-        @foreach ($data['keahlian'] as $keahlian)
-        <tr>
-            <p>{{ $keahlian->namaSkill }}</td>
-            <td item_title> : {{ $keahlian->tingkatanSkill }} %</td>
-        </tr>
-        @endforeach
-        </ul>
-      </div>
 
       <div class="edu">
         <h3 class="title">Riwayat Pendidikan</h3>
@@ -78,18 +72,35 @@
         </div>
       </div>
 
-    </div>
-    <div class="group-2">
       <div class="exp">
         <h3 class="title">Riwayat Pekerjaan</h3>
         <div class="exp_item">
         @foreach ($data['riwayatPekerjaan'] as $riwayatpk)
             <tr>
                 <td class="item_preTitle">{{ $riwayatpk->tgl_mulai }} sd. {{ $riwayatpk->tgl_akhir }}</td>
-                <p class="item_title">{{ $riwayatpk->namaPerusahaan }} - {{ $riwayatpk->domisilPerusahaan }}</p>
+                <p class="item_preTitle">{{ $riwayatpk->namaPerusahaan }} - {{ $riwayatpk->domisilPerusahaan }}</p>
                 <p class="item_subtitle">{{ $riwayatpk->jabatan }}</p>
             </tr>
-      @endforeach
+        @endforeach
+      </div>
+
+      <div class="skills">
+          <h3 class="title">Keahlian</h3>
+          <ul class="skills_list description">
+              @foreach ($data['keahlian'] as $keahlian)
+              <li>
+                  <span class="skill-name">{{ $keahlian->namaSkill }}:</span>
+                  <span class="skill-percent">{{ $keahlian->tingkatanSkill }}%</span>
+              </li>
+              @endforeach
+          </ul>
+      </div>
+
+
+    </div>
+
+    <div class="group-2">
+
       <div class="contact">
         <h3 class="title">Kontak</h3>
         <div class="contact_info">
@@ -98,6 +109,7 @@
           </p>
         </div>
       </div>
+
       <div class="social">
         <h3 class="title">Alamat</h3>
           <a href="#" target="_b" class="social_item">
@@ -106,12 +118,7 @@
           </a>
         </div>
       </div>
-        </div>
     </div>
-    
-      </div>
-    </div>
-    <hr>
   </div>
   <script>
     feather.replace()
