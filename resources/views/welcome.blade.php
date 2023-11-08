@@ -90,28 +90,12 @@
             <span class="visually-hidden">Next</span>
         </button>
         </div>
-
             <h2>About</h2>
             <p class="par"> WPP adalah sebuah platform berbasis web yang dirancang
                 khusus untuk membantu individu membuat Curriculum Vitae (CV) profesional mereka sendiri dengan mudah, cepat, dan efisien.
                 Dengan "CV Creator," Anda dapat menghasilkan CV yang menarik dan berkualitas tinggi tanpa harus memiliki pengetahuan
                 mendalam dalam desain grafis atau keahlian teknis lainnya.
                 <br></p>
-            <h2>Fitur</h2>
-            <ul class="par2">
-                <li>
-                    <p><strong> SIMPAN SEBAGAI PDF</strong></p>
-                    <p>Anda dapat mengunduhnya dalam format PDF.</p>
-                </li>
-                <li>
-                    <p><strong>MEMBUAT CV SECARA GRATIS</strong></p>
-                    <p>Anda dapat membuat CV Anda secara gratis.</p>
-                </li>
-                <li>
-                    <p><strong>MEMBUAT DENGAN MUDAH</strong></p>
-                    <p>Anda dapat dengan mudah membuat CV.</p>
-                </li>
-            </ul>
         </div>
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
