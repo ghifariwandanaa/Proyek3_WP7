@@ -33,7 +33,7 @@
         </div>
     </nav>
     <!-- Isi dari Cv -->
-  <div class="container">
+  <div class="container">a
     <div class="profile">
       <div class="profile_container">
         <div class="profile_profileImg">
