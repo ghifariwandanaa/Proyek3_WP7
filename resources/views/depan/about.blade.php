@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="left-container" href="/cv"><< Back to Dashboard</a>
+                    <a class="left-container" href="/cv">< Back to Dashboard</a>
                 </li>
             </ul>
         </div>
@@ -36,7 +36,9 @@
     <div class="profile">
       <div class="profile_container">
         <div class="profile_profileImg">
-          <img src="./images/profileImage.png" alt="WP7">
+          <img class="images" src="{{ asset('storage/' . $data['profile']->gambar) }}" alt="profile" />
+          <a class="downloadBtn" href="./cv.pdf" download="Resume.pdf">Download Resume</a>
+          <a href="/profile/1/edit" class="downloadBtn">Edit</a>
         </div>
         <div>
           <h1 class="profile_name">
@@ -46,8 +48,6 @@
           <p class="description profile_description">
           {{ $data['profile']->dataDiri }}
           </p>
-          <a class="downloadBtn" href="./cv.pdf" download="Resume.pdf">Download Resume</a>
-          <a href="/profile/1/edit" class="downloadBtn">Edit</a>
         </div>
       </div>
     </div>
