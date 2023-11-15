@@ -6,7 +6,7 @@ use App\Http\Controllers\DepanController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
-
+use App\Http\Controllers\LoginWithGoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +56,8 @@ Route::post('/logout', [loginController::class, 'logout']);
     
 Route::get('/register', [registerController::class, 'index']);
 Route::post('/register', [registerController::class, 'store']);
+
+
+Route::get('auth/google', [LoginWithGoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [LoginWithGoogleController::class, 'handleGoogleCallback']);
+
