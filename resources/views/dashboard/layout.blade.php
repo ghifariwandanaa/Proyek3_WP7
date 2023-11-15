@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="{{ asset('admin') }}/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="{{ asset('admin') }}/vendors/base/vendor.bundle.base.css">
   <link rel="stylesheet" href="{{ asset('admin') }}/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ezv3O+qF+nssL47eugR6F7hByOPIqaaW73E6Iv/GJ/Fkhbu2QcmkOrqKtxr0KZBI" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset('admin') }}/css/style.css">
   <link rel="stylesheet" href="welcome/css/styles.css">
   <link rel="shortcut icon" href="{{ asset('admin') }}/images/favicon.png" />
@@ -25,15 +28,7 @@
         </div>  
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <div class="navbar">
-          <h2 class="style_a">proyek 3</h2>
-        </div>
-        <div class="menu">
-          <tr class>
-              <td><a class="style_a" href="/">ABOUT</a></td>
-              <td><a class="style_a" href="/cv">CV</a></td>
-          </tr>
-        </div>
+
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
@@ -64,9 +59,13 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
+          <a class="nav-link" href="/">
+              <i class="mdi mdi-home menu-icon"></i>
+              <span class="menu-title">Home</span>
+            </a>
             <a class="nav-link" href="{{ route('depan.index') }}">
-              <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-              <span class="menu-title">My Profile</span>
+              <i class="mdi mdi-account menu-icon"></i>
+              <span class="menu-title">Profile</span>
             </a>
           </li>            
         </ul>

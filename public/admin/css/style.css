@@ -58,6 +58,8 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 @-moz-keyframes flash {
   0% {
     opacity: 1;
@@ -11436,6 +11438,15 @@ fieldset:disabled .btn {
   border-color: #4d83ff;
 }
 
+.btn-primary1 {
+  color: #fff;
+  background-color: #686868;
+  border-color: #686868;
+  border-radius: 10px; /* Menambahkan lengkungan sebesar 10px */
+  padding: 10px 20px; /* Contoh padding untuk memberikan ruang di dalam tombol */
+}
+
+
 .btn-primary:hover {
   color: #000;
   background-color: #6896ff;
@@ -11629,7 +11640,10 @@ fieldset:disabled .btn {
   color: #000;
   background-color: #ff4747;
   border-color: #ff4747;
+  border-radius: 10px; /* Menambahkan lengkungan sebesar 10px */
+  padding: 10px 20px;
 }
+
 
 .btn-danger:hover {
   color: #000;
@@ -12514,6 +12528,11 @@ fieldset:disabled .btn {
   list-style: none;
 }
 
+.nav-item:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ubah nilai sesuai kebutuhan */
+  transition: box-shadow 0.3s ease; /* Efek transisi untuk smooth transition */
+}
+
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
@@ -13137,8 +13156,11 @@ fieldset:disabled .btn {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid #e7eaed;
-  border-radius: 0;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Menambahkan efek bayangan di bawah elemen */
 }
+
+
 
 .card > hr {
   margin-right: 0;
@@ -22526,6 +22548,7 @@ dl li {
   vertical-align: middle;
 }
 
+
 .sidebar .nav .nav-item .nav-link .badge {
   margin-left: auto;
 }
@@ -22551,7 +22574,7 @@ dl li {
 .sidebar .nav .nav-item.active > .nav-link i,
 .sidebar .nav .nav-item.active > .nav-link .menu-title,
 .sidebar .nav .nav-item.active > .nav-link .menu-arrow {
-  color: #4d83ff;
+  color: #000;
 }
 
 .sidebar .nav:not(.sub-menu) {
@@ -23192,7 +23215,7 @@ dl li {
 .style_a{
   text-decoration: none;
   color: gray;
-  font-family: Arial;
+  font-family:'Montserrat', sans-serif ;
   font-weight: bold;
   transition: 0.4s ease-in-out;
   margin-right:50px;
