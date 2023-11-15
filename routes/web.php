@@ -47,7 +47,7 @@ Route::get('/', function () {
 Route::get('/profile/{id}/edit', [profileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/{id}', [profileController::class, 'update'])->name('profile.update');
 Route::get('/profile/cv/{id}', [ProfileController::class, 'cv'])->name('profile.cv');
-Route::get('/depan/about', [DepanController::class, 'about'])->name('depan.about');
+Route::get('/depan/about', [DepanController::class, 'about'])->name('depan.about')->middleware('auth');
 Route::get('/depan/about/{id}', [DepanController::class, 'show'])->name('depan.about.show');
 
 Route::get('/login', [loginController::class, 'index'])->middleware('guest');

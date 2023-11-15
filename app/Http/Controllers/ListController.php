@@ -11,10 +11,15 @@ use App\Models\Skill;
 class ListController extends Controller
 {
     public function index()
-    {
-        $data = profile::orderBy('nama','asc')->get();
-        return view ('listcv')->with('data',$data);
-    }
+{
+    $profiles = Profile::orderBy('nama', 'asc')->get();
+    $currentId = auth()->id();
+
+    return view('listcv', [
+        'data' => $profiles,
+        'currentId' => $currentId, // Menambahkan informasi $currentId ke data yang dikirimkan ke view
+    ]);
+}
 
     public function show($id)
     {
@@ -22,7 +27,16 @@ class ListController extends Controller
         $riwayatPekerjaan = RiwayatPekerjaan::where('profile_id', $profile->id)->get();
         $riwayatPendidikan = RiwayatPendidikan::where('profile_id', $profile->id)->get();
         $keahlian = Skill::where('profile_id', $profile->id)->get();
+        $currentId = auth()->id();
 
-        return view('depan.about', ['data' => ['profile' => $profile, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian ]]);
+        return view('depan.about', [
+            'data' => [
+                'profile' => $profile,
+                'riwayatPekerjaan' => $riwayatPekerjaan,
+                'riwayatPendidikan' => $riwayatPendidikan,
+                'keahlian' => $keahlian,
+                'currentId' => $currentId
+            ]
+        ]);
     }
 }

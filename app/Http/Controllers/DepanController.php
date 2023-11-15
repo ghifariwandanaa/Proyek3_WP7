@@ -13,8 +13,13 @@ class DepanController extends Controller
 {
     public function index()
     {
-        $data = profile::orderBy('nama','asc')->get();
-        return view ('depan.dataprofil')->with('data',$data);
+        $profiles = Profile::orderBy('nama', 'asc')->get();
+        $currentId = auth()->id();
+
+        return view('depan.dataprofil', [
+            'data' => $profiles,
+            'currentId' => $currentId, // Menambahkan informasi $currentId ke data yang dikirimkan ke view
+        ]);
     }
 
     public function show($id)

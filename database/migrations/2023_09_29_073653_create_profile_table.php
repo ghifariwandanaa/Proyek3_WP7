@@ -12,6 +12,7 @@ return new class extends Migration
     {
         Schema::create('profile', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('profile');
             $table->string('nama');
             $table->string('alamat');
             $table->string('kontak');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\DepanController;
+use App\Models\User;
 use App\Models\profile;
 use App\Models\Portofolio;
 use App\Models\RiwayatPekerjaan;
@@ -17,8 +18,13 @@ class profileController extends Controller
      */
     public function index()
     {
-        $data = profile::orderBy('nama','asc')->get();
-        return view ('depan.dataprofil')->with('data',$data);
+        $profiles = Profile::orderBy('nama', 'asc')->get();
+        $currentId = auth()->id();
+
+        return view('depan.dataprofil', [
+            'data' => $profiles,
+            'currentId' => $currentId, // Menambahkan informasi $currentId ke data yang dikirimkan ke view
+        ]);
     }
 
     public function cv($id)
@@ -45,6 +51,7 @@ class profileController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
@@ -81,6 +88,7 @@ class profileController extends Controller
 
 
         $profile = profile::create([
+            'user_id' => $request->user()->id,
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
