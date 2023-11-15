@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\DepanController;
 use App\Http\Controllers\ListController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\registerController;
 
 
 /*
@@ -20,7 +22,7 @@ use App\Http\Controllers\ListController;
 
 Route::get('/about', [DepanController::class, 'about'])->name('about');
 
-Route::redirect('home','dashboard');
+Route::redirect('home','aboutweb');
 
 Route::view('aboutweb', 'welcome');
 
@@ -47,3 +49,10 @@ Route::put('/profile/{id}', [profileController::class, 'update'])->name('profile
 Route::get('/profile/cv/{id}', [ProfileController::class, 'cv'])->name('profile.cv');
 Route::get('/depan/about', [DepanController::class, 'about'])->name('depan.about');
 Route::get('/depan/about/{id}', [DepanController::class, 'show'])->name('depan.about.show');
+
+Route::get('/login', [loginController::class, 'index'])->middleware('guest');
+Route::post('/login', [loginController::class, 'store']);
+Route::post('/logout', [loginController::class, 'logout']);
+    
+Route::get('/register', [registerController::class, 'index']);
+Route::post('/register', [registerController::class, 'store']);
