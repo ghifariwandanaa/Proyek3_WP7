@@ -11,15 +11,26 @@ use App\Models\Skill;
 class ListController extends Controller
 {
     public function index()
-{
-    $profiles = Profile::orderBy('nama', 'asc')->get();
-    $currentId = auth()->id();
+    {
+        $profiles = Profile::orderBy('nama', 'asc')->get();
+        $currentId = auth()->id();
+        // Mengambil data keahlian (skills) untuk setiap profil
+        $data = [];
+        foreach ($profiles as $profile) {
+            $keahlian = Skill::where('profile_id', $profile->id)->get();
+            $data[] = [
+                'profile' => $profile,
+                'keahlian' => $keahlian,
+                'currendId' => $currentId
+            ];
+        }
 
-    return view('listcv', [
-        'data' => $profiles,
-        'currentId' => $currentId, // Menambahkan informasi $currentId ke data yang dikirimkan ke view
-    ]);
-}
+
+        return view('listcv', [
+            'data' => $data,
+        ]);
+    }
+
 
     public function show($id)
     {
