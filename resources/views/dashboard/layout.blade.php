@@ -35,18 +35,11 @@
               <img src="{{ asset('admin') }}/images/faces/OIP.jpg" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="{{ route('depan.index') }}">
-                <i class="mdi mdi-account text-primary"></i>
-                Profile
-              </a>
-              <a class="dropdown-item">
-                <i class="mdi mdi-settings text-primary"></i>
-                Settings
-              </a>
-              <a class="dropdown-item">
-                <i class="mdi mdi-logout text-primary"></i>
-                Logout
-              </a>
+              <form action="/logout" method="post">
+                  @csrf
+                  <button type="submit" class="dropdown-item"><i class="mdi mdi-logout text-danger"></i>
+                  Logout</button>
+              </form>
             </div>
           </li>
         </ul>
@@ -59,14 +52,18 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-          <a class="nav-link" href="/">
-              <i class="mdi mdi-home menu-icon"></i>
-              <span class="menu-title">Home</span>
+            <a class="nav-link" href="/">
+                <i class="mdi mdi-home menu-icon"></i>
+                <span class="menu-title">Home</span>
             </a>
             <a class="nav-link" href="{{ route('depan.index') }}">
-              <i class="mdi mdi-account menu-icon"></i>
-              <span class="menu-title">Profile</span>
+                <i class="mdi mdi-account menu-icon"></i>
+                <span class="menu-title">Profile</span>
             </a>
+            <a class="nav-link" href="#">
+                <i class="mdi mdi-settings menu-icon"></i>
+                <span class="menu-title">Settings</span>
+              </a>
           </li>            
         </ul>
       </nav>
