@@ -142,6 +142,10 @@ ul li a:hover{
   position: relative;
 }
 
+.content .card{
+  background-color: #00000071;
+}
+
 .content .par{
   padding-left: 20px;
   padding-bottom: 25px;

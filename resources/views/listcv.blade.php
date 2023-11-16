@@ -20,5 +20,17 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="card" style="width:25%">
+        <?php $i = 1; ?>
+        @foreach ($data as $item)
+            <img src="{{ asset('storage/' . $item->gambar) }}" alt="" width="300" height="200">
+            <div class="card-body">
+                <h5 class="card-title">{{$item->nama}}</h5>
+                <p class="card-text">{{$item['keahlian']->namaSkill}}</p>
+            </div>
+        @endforeach
+    </div>    
 </div>
+
 @endsection
