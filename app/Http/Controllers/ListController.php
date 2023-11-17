@@ -18,9 +18,13 @@ class ListController extends Controller
         $data = [];
         foreach ($profiles as $profile) {
             $keahlian = Skill::where('profile_id', $profile->id)->get();
+            $riwayatPekerjaan = RiwayatPekerjaan::where('profile_id', $profile->id)->get();
+            $riwayatPendidikan = RiwayatPendidikan::where('profile_id', $profile->id)->get();
             $data[] = [
                 'profile' => $profile,
                 'keahlian' => $keahlian,
+                'riwayatPekerjaan' => $riwayatPekerjaan,
+                'riwayatPendidikan' => $riwayatPendidikan,
                 'currendId' => $currentId
             ];
         }

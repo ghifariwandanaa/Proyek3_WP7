@@ -364,3 +364,11 @@ ul li a:hover{
   color: #000000;
   text-align: left;
 }
+
+.card-text {
+  margin-bottom: 5px;
+}
+
+.judul-card {
+  padding-top: 5px;
+}
