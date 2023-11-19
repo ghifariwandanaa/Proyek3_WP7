@@ -16,6 +16,14 @@
     </div>
 @endif
 
+@if(session('verified'))
+    <div class="alert alert-success alert-dismissible fade show col text-center" role="alert">
+        Email Anda berhasil diverifikasi. Silakan login.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <form class="text-center" action="/login" method="post">
         @csrf

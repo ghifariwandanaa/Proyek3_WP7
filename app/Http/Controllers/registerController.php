@@ -3,25 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 
 class registerController extends Controller
 {
     public function index()
     {
-        return view('akun.register',['title' => 'register']);
+        return view('akun.register', ['title' => 'register']);
     }
 
     public function store(Request $request)
     {
-        $validateData = $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:8|'
+            'password' => 'required|min:8'
         ]);
 
-        User::create($validateData);  
+        // Membuat pengguna baru
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
 
-        return redirect('/login')->with('success','Registrasi Berhasil !! silahkan login');
+        event(new registered($user));
+
+        // Mengirim notifikasi verifikasi email
+        $user->sendEmailVerificationNotification();
+
+        return redirect('/login')->with('success', 'Silahkan cek email Anda untuk verifikasi.');
     }
 }           

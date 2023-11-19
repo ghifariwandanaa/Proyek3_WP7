@@ -7,6 +7,7 @@ use App\Http\Controllers\ListController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\LoginWithGoogleController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,7 @@ Route::get('/profile/cv/{id}', [ProfileController::class, 'cv'])->name('profile.
 Route::get('/depan/about', [DepanController::class, 'about'])->name('depan.about')->middleware('auth');
 Route::get('/depan/about/{id}', [DepanController::class, 'show'])->name('depan.about.show');
 
-Route::get('/login', [loginController::class, 'index'])->middleware('guest');
+Route::get('/login', [loginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [loginController::class, 'store']);
 Route::post('/logout', [loginController::class, 'logout']);
     
@@ -60,4 +61,25 @@ Route::post('/register', [registerController::class, 'store']);
 
 Route::get('auth/google', [LoginWithGoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [LoginWithGoogleController::class, 'handleGoogleCallback']);
+
+
+Route::get('/email/verify', function () {
+    return view('akun.verify');
+})->name('verification.notice')->middleware(['auth', 'verified']); // Tambahkan middleware 'verified'
+
+// Auth::routes(['verify' => true]);
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/login')->with('verified', true);
+})->middleware('auth','signed')->name('verification.verify');
+
+
+Route::get('/dataprofile', [DepanController::class, 'index'])->middleware(['auth', 'verified']);
+
+Route::post('/email/verification-notification', function () {
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+
 
