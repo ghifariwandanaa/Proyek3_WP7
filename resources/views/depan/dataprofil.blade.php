@@ -2,6 +2,11 @@
 
 @section('konten')
 <div class="table-responsive">
+    @if($user->email_verified_at === null)
+        <div class="alert alert-danger" role="alert">
+            email belum diverifikasi, klik <a href="https://mail.google.com/" class="alert-link">email</a>. untuk menuju laman email anda
+        </div>
+    @endif
     <div class="pb-3"><a href="{{route('profile.create')}}"class="btn btn-primary">+ Tambah profile</a></div>
     <table class="table table-stripped">
         <tbody>
