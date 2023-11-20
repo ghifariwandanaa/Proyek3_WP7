@@ -45,7 +45,7 @@
                     <h1 class="profile_name">
                         <span class="profile_name_lastName">{{ $data['profile']->nama }}</span>
                     </h1>
-                    <p class="profile_title">DESKRIPSI DIRI</p>
+                    <p class="title">DESKRIPSI DIRI</p>
                     <p class="description profile_description">
                         {{ $data['profile']->dataDiri }}
                     </p>
@@ -54,61 +54,105 @@
         </div>
     </div>
 
-    <div class="container1">
-        <div class="profile">
-            <div class="group-1">
-                <div class="edu">
-                    <h3 class="title">Riwayat Pendidikan</h3>
-                    <div class="edu_item">
-                        @foreach ($data['riwayatPendidikan'] as $riwayatpd)
-                        <div class="item_preTitle">{{ $riwayatpd->thn_mulai }} - {{ $riwayatpd->thn_akhir }}</div>
-                        <p class="item_subtitle">{{ $riwayatpd->namaSekolah }}</p>
-                        @endforeach
+    <!-- Ini Buat isi Resume -->
+        <!-- Riwayat Pendidikan -->
+        <section id="resume-education" class="resume">
+            <div class="container1" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Riwayat Pendidikan</h2>
+                </div>
+                <div class="row">
+                        <div class="resume-item pb-0">
+                            @foreach ($data['riwayatPendidikan'] as $riwayatpd)
+                            <h5>{{ $riwayatpd->thn_mulai }} - {{ $riwayatpd->thn_akhir }}</h5>
+                            <h4>{{ $riwayatpd->namaSekolah }}</h4>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Riwayat Pekerjaan -->
+        <section id="resume-experience" class="resume">
+            <div class="container1" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Riwayat Pekerjaan</h2>
+                </div>
+                <div class="row">
+                        <div class="resume-item pb-0">
+                            @foreach ($data['riwayatPekerjaan'] as $riwayatpk)
+                            <h5>{{ $riwayatpk->tgl_mulai }} sd. {{ $riwayatpk->tgl_akhir }}</h5>
+                            <p class="item_preTitle">{{ $riwayatpk->namaPerusahaan }} - {{ $riwayatpk->domisilPerusahaan }}</p>
+                            <p class="item_subtitle">{{ $riwayatpk->jabatan }}</p>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="skills section-bg">
+            <div class="container1" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Keahlian</h2>
+                    <!-- Container for Keterangan -->
+                    <div class="keterangan-container">
+                        <div class = "title1" >Keterangan :</div>
+                        <div class = "text-keterangan"
+                        <p>Merah => Pemula</p>
+                        <p>Kuning => Menengah</p>
+                        <p>Hijau => Mahir</p>
+                    </div>
                     </div>
                 </div>
 
-                <div class="exp">
-                    <h3 class="title">Riwayat Pekerjaan</h3>
-                    <div class="exp_item">
-                        @foreach ($data['riwayatPekerjaan'] as $riwayatpk)
-                        <div class="item_preTitle">{{ $riwayatpk->tgl_mulai }} sd. {{ $riwayatpk->tgl_akhir }}</div>
-                        <p class="item_preTitle">{{ $riwayatpk->namaPerusahaan }} - {{ $riwayatpk->domisilPerusahaan }}</p>
-                        <p class="item_subtitle">{{ $riwayatpk->jabatan }}</p>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="skills">
-                    <h3 class="title">Keahlian</h3>
-                    <ul class="skills_list description">
+                <div class="row skills-content">
+                    <div class="progress">
                         @foreach ($data['keahlian'] as $keahlian)
-                        <li>
-                            <span class="skill-name">{{ $keahlian->namaSkill }}:</span>
-                            <span class="skill-percent">{{ $keahlian->tingkatanSkill }}%</span>
-                        </li>
+                            <li>
+                                <span class="skill">{{ $keahlian->namaSkill }}:<i class="val">{{ $keahlian->tingkatanSkill }}</i></span>
+                                <div class="progress-bar-wrap">
+                                    <div class="progress-bar @if($keahlian->tingkatanSkill < 50) red @elseif($keahlian->tingkatanSkill < 75) yellow @else green @endif"
+                                        role="progressbar">
+                                    </div>
+                                    
+                                </div>
+                            </li>
                         @endforeach
-                    </ul>
-                </div>
-            </div>
-
-            <div class="group-2">
-                <div class="contact">
-                    <h3 class="title">Kontak</h3>
-                    <div class="contact_info">
-                        <p class="description">{{ $data['profile']->kontak }}</p>
                     </div>
                 </div>
 
-                <div class="social">
-                    <h3 class="title">Alamat</h3>
-                    <a href="#" target="_blank" class="social_item">
-                        <i class="fab fa-github"></i>
-                        <span>{{ $data['profile']->alamat }}</span>
-                    </a>
+            </div>
+        </section>
+
+
+        <!-- Kontak -->
+        <section id="contact" class="contact">
+            <div class="container1" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Contact</h2>
+            </div>
+
+                <div class="row">
+                    <div class="info">
+                    <div class="address">
+                        <i class="bi bi-geo-alt"></i>
+                        <h4>Location:</h4>
+                        <p>{{ $data['profile']->alamat }}</p>
+                    </div>
+
+                        <div class="phone">
+                            <i class="bi bi-phone"></i>
+                            <h4>Call:</h4>
+                            <p>{{ $data['profile']->kontak }}</p>
+                        </div>
+                </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+
     <script>
         feather.replace()
     </script>
