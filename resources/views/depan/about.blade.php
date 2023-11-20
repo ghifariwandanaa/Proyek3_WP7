@@ -36,11 +36,13 @@
     <div class="container">
         <div class="profile">
             <div class="profile_container">
-                <div class="profile_profileImg">
-                    <img class="images" src="{{ asset('storage/' . $data['profile']->gambar) }}" alt="profile" />
-                    <a class="downloadBtn" href="./cv.pdf" download="Resume.pdf">Download Resume</a>
-                    <a href="{{ route('profile.edit', $data['profile']->id) }}" class="downloadBtn">Edit</a>
-                </div>
+                    <div class="profile_profileImg">
+                        <img class="images" src="{{ asset('storage/' . $data['profile']->gambar) }}" alt="profile" />
+                        @if($data['profile']->user_id === $data['currentId'])
+                            <a class="downloadBtn" href="./cv.pdf" download="Resume.pdf">Download Resume</a>
+                            <a href="{{ route('profile.edit', $data['profile']->id) }}" class="downloadBtn">Edit</a>
+                        @endif
+                    </div>
                 <div>
                     <h1 class="profile_name">
                         <span class="profile_name_lastName">{{ $data['profile']->nama }}</span>

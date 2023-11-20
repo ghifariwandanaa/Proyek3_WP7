@@ -281,6 +281,8 @@ class profileController extends Controller
         // Hapus catatan terkait di tabel 'skills' secara manual
         Skill::where('profile_id', $profile->id)->delete();
 
+        Portofolio::where('profile_id', $profile->id)->delete();
+
         // Set user_id to null before deleting the profile
         $profile->user_id = null;
         $profile->save();
@@ -288,6 +290,6 @@ class profileController extends Controller
         // Hapus halaman itu sendiri
         $profile->delete();
 
-        return redirect()->route('depan.dataprofil')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('profile.index')->with('success', 'Data berhasil dihapus');
     }
 }
