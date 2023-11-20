@@ -20,10 +20,12 @@ class profileController extends Controller
     {
         $profiles = Profile::orderBy('nama', 'asc')->get();
         $currentId = auth()->id();
+        $user = auth()->user();
 
         return view('depan.dataprofil', [
             'data' => $profiles,
             'currentId' => $currentId, // Menambahkan informasi $currentId ke data yang dikirimkan ke view
+            'user' => $user
         ]);
     }
 
@@ -87,8 +89,10 @@ class profileController extends Controller
         }
 
 
-        $profile = profile::create([
-            'user_id' => $request->user()->id,
+        $currentUserId = auth()->id(); // Mendapatkan ID pengguna yang sedang masuk
+
+        $profile = Profile::create([
+            'user_id' => $currentUserId,
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
@@ -262,6 +266,7 @@ class profileController extends Controller
     public function destroy(string $id)
     {
         $profile = profile::find($id);
+        $user = User::find($id);
 
         if (!$profile) {
             return redirect()->route('profile.index')->with('error', 'Data tidak ditemukan');
@@ -275,6 +280,10 @@ class profileController extends Controller
 
         // Hapus catatan terkait di tabel 'skills' secara manual
         Skill::where('profile_id', $profile->id)->delete();
+
+        // Set user_id to null before deleting the profile
+        $profile->user_id = null;
+        $profile->save();
 
         // Hapus halaman itu sendiri
         $profile->delete();

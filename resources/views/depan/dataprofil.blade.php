@@ -4,9 +4,19 @@
 <div class="table-responsive">
     @if($user->email_verified_at === null)
         <div class="alert alert-danger" role="alert">
-            email belum diverifikasi, klik <a href="https://mail.google.com/" class="alert-link">email</a>. untuk menuju laman email anda
+            Email belum diverifikasi, klik <a href="https://mail.google.com/" class="alert-link">di sini</a> untuk menuju laman email Anda.
+            @if(session('resent'))
+                <div class="alert alert-success mt-2" role="alert">
+                    Verifikasi email telah dikirim ulang. Silakan cek email Anda.
+                </div>
+            @endif
+            <form action="{{ route('verification.resend') }}" method="post" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Kirim Ulang Verifikasi</button>.
+            </form>
         </div>
     @endif
+
     <div class="pb-3"><a href="{{route('profile.create')}}"class="btn btn-primary">+ Tambah profile</a></div>
     <table class="table table-stripped">
         <tbody>

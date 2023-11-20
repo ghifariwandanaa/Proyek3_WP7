@@ -37,4 +37,15 @@ class registerController extends Controller
 
         return redirect('/login')->with('success', 'Silahkan cek email Anda untuk verifikasi.');
     }
+
+    public function resend(Request $request)
+    {
+        if ($request->user()->hasVerifiedEmail()) {
+            return redirect('/');
+        }
+
+        $request->user()->sendEmailVerificationNotification();
+
+        return back()->with('resent', true);
+    }
 }           

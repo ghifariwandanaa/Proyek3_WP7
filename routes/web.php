@@ -58,6 +58,9 @@ Route::post('/logout', [loginController::class, 'logout']);
 Route::get('/register', [registerController::class, 'index']);
 Route::post('/register', [registerController::class, 'store']);
 
+Route::post('/email/resend', [registerController::class, 'resend'])->name('verification.resend');
+
+
 
 Route::get('auth/google', [LoginWithGoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [LoginWithGoogleController::class, 'handleGoogleCallback']);
