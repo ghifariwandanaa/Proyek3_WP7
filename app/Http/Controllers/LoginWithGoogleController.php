@@ -19,6 +19,7 @@ class LoginWithGoogleController extends Controller
         try {
       
             $user = Socialite::driver('google')->user();
+            // dd($user->user['email_verified']);
             $finduser = User::where('google_id', $user->id)->first();
        
             if($finduser){
@@ -34,6 +35,11 @@ class LoginWithGoogleController extends Controller
                     'google_id'=> $user->id,
                     'password' => encrypt('123456dummy')
                 ]);
+
+                if($user->user['email_verified'])
+                {
+                    $newUser->verifyGoogleAccount();
+                }
       
                 Auth::login($newUser);
                 return redirect()->intended('/aboutweb');
