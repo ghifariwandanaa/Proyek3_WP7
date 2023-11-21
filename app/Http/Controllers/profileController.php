@@ -21,7 +21,7 @@ class profileController extends Controller
         $profiles = Profile::orderBy('nama', 'asc')->get();
         $currentId = auth()->id();
         $user = auth()->user();
-
+        
         return view('depan.dataprofil', [
             'data' => $profiles,
             'currentId' => $currentId, // Menambahkan informasi $currentId ke data yang dikirimkan ke view
