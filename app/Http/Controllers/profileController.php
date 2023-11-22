@@ -35,8 +35,9 @@ class profileController extends Controller
         $riwayatPekerjaan = RiwayatPekerjaan::where('profile_id', $profile->id)->get();
         $riwayatPendidikan = RiwayatPendidikan::where('profile_id', $profile->id)->get();
         $keahlian = Skill::where('profile_id', $profile->id)->get();
+        $currentId = auth()->id();
 
-        return view('depan.about', ['data' => ['profile' => $profile, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian ]]);
+        return view('depan.about', ['data' => ['profile' => $profile, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian, 'currentId'=>$currentId ]]);
     }
 
 
@@ -183,6 +184,7 @@ class profileController extends Controller
     public function update(Request $request, string $id)
     {
         // Validasi input
+        // dd($request);
         $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
@@ -216,11 +218,8 @@ class profileController extends Controller
             'dataDiri' => $request->dataDiri,
         ]);
 
-        // Perbarui atau tambahkan riwayat pekerjaan
-        // dd($request->riwayatPekerjaan);
         foreach ($request->riwayatPekerjaan as $pekerjaan) {
             RiwayatPekerjaan::updateOrCreate(
-                // ['id' => $pekerjaan['id']], // Kriteria pencarian berdasarkan ID (jika ID ada)
                 [
                     'profile_id' => $profile->id,
                     'tgl_mulai' => $pekerjaan['tgl_mulai'],
@@ -235,7 +234,6 @@ class profileController extends Controller
         // Perbarui atau tambahkan riwayat pendidikan;
         foreach ($request->riwayatPendidikan as $pendidikan) {
             RiwayatPendidikan::updateOrCreate(
-                // ['id' => $pendidikan['id']], // Kriteria pencarian berdasarkan ID (jika ID ada)
                 [
                     'profile_id' => $profile->id,
                     'thn_mulai' => $pendidikan['thn_mulai'],
@@ -248,13 +246,13 @@ class profileController extends Controller
         // Perbarui atau tambahkan skills
         foreach ($request->skills as $skill) {
             Skill::updateOrCreate(
-                // ['id' => $skill['id']], // Kriteria pencarian berdasarkan ID (jika ID ada)
                 [
                     'profile_id' => $profile->id,
                     'namaSkill' => $skill['namaSkill'],
                     'tingkatanSkill' => $skill['tingkatanSkill'],
                 ]
             );
+        
         }
         return redirect()->route('profile.cv', ['id' => $profile->id])->with('success', 'Data berhasil diperbarui.');
     }
