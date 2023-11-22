@@ -95,10 +95,6 @@
             <li>{{ $skill->namaSkill }}: {{ $skill->tingkatanSkill }}</li>
             @endforeach
         </ul>
-
-        <!-- Contact Information -->
-        <h2>Contact Information</h2>
-        <p>Location: {{ $profile->alamat }}</p>
     </div>
 </body>
 

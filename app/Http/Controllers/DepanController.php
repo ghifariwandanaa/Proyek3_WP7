@@ -9,6 +9,7 @@ use App\Models\RiwayatPekerjaan;
 use App\Models\RiwayatPendidikan;
 use App\Models\Skill;
 use Barryvdh\DomPDF\Facade\Pdf;
+
 class DepanController extends Controller
 {
     public function index()
