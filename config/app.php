@@ -168,6 +168,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class, 
         // App\Providers\JetstreamServiceProvider::class,
     ])->toArray(),
 
@@ -186,6 +187,7 @@ return [
         // 'Example' => App\Facades\Example::class,
          Laravel\Socialite\SocialiteServiceProvider::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ])->toArray(),
 
     

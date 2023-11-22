@@ -51,6 +51,8 @@ Route::get('/profile/cv/{id}', [ProfileController::class, 'cv'])->name('profile.
 Route::get('/depan/about', [DepanController::class, 'about'])->name('depan.about')->middleware('auth');
 Route::get('/depan/about/{id}', [DepanController::class, 'show'])->name('depan.about.show');
 
+Route::get('/generate-pdf/{id}', [DepanController::class, 'generatePDF'])->name('generate.pdf');
+
 Route::get('/login', [loginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [loginController::class, 'store']);
 Route::post('/logout', [loginController::class, 'logout']);

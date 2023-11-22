@@ -21,7 +21,7 @@ class profileController extends Controller
         $profiles = Profile::orderBy('nama', 'asc')->get();
         $currentId = auth()->id();
         $user = auth()->user();
-
+        
         return view('depan.dataprofil', [
             'data' => $profiles,
             'currentId' => $currentId, // Menambahkan informasi $currentId ke data yang dikirimkan ke view
@@ -37,7 +37,7 @@ class profileController extends Controller
         $keahlian = Skill::where('profile_id', $profile->id)->get();
         $currentId = auth()->id();
 
-        return view('depan.about', ['data' => ['profile' => $profile, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian, 'currentId'=>$currentId ]]);
+        return view('depan.about', ['data' => ['profile' => $profile, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian ]]);
     }
 
 
