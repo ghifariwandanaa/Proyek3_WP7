@@ -36,17 +36,6 @@ class DepanController extends Controller
         return view('depan.about', ['data' => ['profile' => $profile, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian, 'currentId'=>$currentId ]]);
     }
 
-    public function print($id)
-    {
-        $profile = profile::find($id);
-        $riwayatPekerjaan = RiwayatPekerjaan::where('profile_id', $profile->id)->get();
-        $riwayatPendidikan = RiwayatPendidikan::where('profile_id', $profile->id)->get();
-        $keahlian = Skill::where('profile_id', $profile->id)->get();
-        $currentId = auth()->id();
-
-        return view('depan.atscv', ['data' => ['profile' => $profile, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian, 'currentId'=>$currentId ]]);
-    }
-
     public function generatePDF(Request $request, $id)
 {
     $profile = Profile::find($id);
