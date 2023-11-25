@@ -27,7 +27,7 @@
                         <td><img src="{{asset('storage/' . $item->gambar) }}" alt="" width="100"></td>
                         <td class="col-9">{{$item->nama}}</td>
                         <td>
-                            <a href="{{ route('depan.show', ['depan' => $item->id]) }}" class="btn btn-primary1">Show</a>
+                            <a href="{{ route('depan.show', ['depan' => $item->id]) }}" class="btn btn-primary">Show</a>
                             <form onsubmit="return confirm('Yakin ingin menghapus data ini?')"
                                 action="{{ route('profile.destroy', $item->id)}}" class="d-inline" method="POST">
                                 @csrf

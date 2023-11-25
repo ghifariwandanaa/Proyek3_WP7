@@ -31,14 +31,20 @@
                     <th>Nama Sekolah/Universitas</th>
                     <th>Tahun Masuk</th>
                     <th>Tahun Keluar</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="Pendidikan">
                 @foreach ($riwayatPendidikan as $index => $pendidikan)
                     <tr>
+                        <input type="hidden" name="riwayatPendidikan[{{ $index }}][id]" value="{{ $pendidikan->id }}">
                         <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $index }}][namaSekolah]" placeholder="Nama Sekolah/Universitas" value="{{ $pendidikan->namaSekolah }}" required></td>
                         <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $index }}][thn_mulai]" placeholder="Tahun Masuk" value="{{ $pendidikan->thn_mulai }}" required></td>
                         <td><input type="text" class="form-control" name="riwayatPendidikan[{{ $index }}][thn_akhir]" placeholder="Tahun Keluar" value="{{ $pendidikan->thn_akhir }}" required></td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="hapusBaris(this)">Hapus</button>
+                            <input type="hidden" name="riwayatPendidikan[{{ $index }}][deleted]" value="false">
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -58,16 +64,22 @@
                     <th>Jabatan</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Akhir</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="Pekerjaan">
                 @foreach ($riwayatPekerjaan as $index => $pekerjaan)
                     <tr>
+                        <input type="hidden" name="riwayatPekerjaan[{{ $index }}][id]" value="{{ $pekerjaan->id }}">
                         <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $index }}][namaPerusahaan]" placeholder="Nama Perusahaan" value="{{ $pekerjaan->namaPerusahaan }}" required></td>
                         <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $index }}][domisilPerusahaan]" placeholder="Domisili Perusahaan" value="{{ $pekerjaan->domisilPerusahaan }}" required></td>
                         <td><input type="text" class="form-control" name="riwayatPekerjaan[{{ $index }}][jabatan]" placeholder="Jabatan" value="{{ $pekerjaan->jabatan }}" required></td>
                         <td><input type="date" class="form-control" name="riwayatPekerjaan[{{ $index }}][tgl_mulai]" value="{{ $pekerjaan->tgl_mulai }}" required></td>
                         <td><input type="date" class="form-control" name="riwayatPekerjaan[{{ $index }}][tgl_akhir]" value="{{ $pekerjaan->tgl_akhir }}" required></td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="hapusBaris(this)">Hapus</button>
+                            <input type="hidden" name="riwayatPekerjaan[{{ $index }}][deleted]" value="false">
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -82,13 +94,19 @@
                 <tr>
                     <th>Nama Skill</th>
                     <th>Tingkat (%)</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="hardSkill">
             @foreach($skills as $index => $skill)
                 <tr>
+                    <input type="hidden" name="skills[{{ $index }}][id]" value="{{ $skill->id }}">
                     <td><input type="text" class="form-control" name="skills[{{ $index }}][namaSkill]" value="{{ $skill->namaSkill }}" placeholder="Nama Skill" required></td>
                     <td><input type="number" class="form-control" name="skills[{{ $index }}][tingkatanSkill]" value="{{ $skill->tingkatanSkill }}" placeholder="Tingkat (%) (0-100)" required></td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="hapusBaris(this)">Hapus</button>
+                        <input type="hidden" name="skills[{{ $index }}][deleted]" value="false">
+                    </td>
                 </tr>
             @endforeach
             </tbody>
@@ -116,10 +134,20 @@
             <td><input type="text" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][jabatan]" placeholder="Jabatan" required></td>
             <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_mulai]" required></td>
             <td><input type="date" class="form-control" name="riwayatPekerjaan[${riwayatPekerjaanIndex}][tgl_akhir]" required></td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm" onclick="hapusBaris(this)">Hapus</button>
+                <input type="hidden" name="riwayatPekerjaan[{{ $index }}][deleted]" value="false">
+            </td>
         `;
         document.getElementById('Pekerjaan').appendChild(newRow);
         riwayatPekerjaanIndex++;
     });
+
+    function hapusBaris(button) {
+        var row = button.closest('tr');
+        row.querySelector('[name$="[deleted]"]').value = true;
+        row.style.display = 'none'; // Sembunyikan baris
+    }
 
     let riwayatPendidikanIndex = {{ count($riwayatPendidikan) }};
     document.getElementById('tambahRiwayatPendidikan').addEventListener('click', function() {
@@ -128,6 +156,10 @@
             <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][namaSekolah]" placeholder="Nama Sekolah/Universitas" required></td>
             <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_mulai]" placeholder="Tahun Masuk" required></td>
             <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][thn_akhir]" placeholder="Tahun Keluar" required></td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm" onclick="hapusBaris(this)">Hapus</button>
+                <input type="hidden" name="riwayatPendidikan[{{ $index }}][deleted]" value="false">
+            </td>
         `;
         document.getElementById('Pendidikan').appendChild(newRow);
         riwayatPekerjaanIndex++;
@@ -140,10 +172,20 @@
         newRow.innerHTML = `
             <td><input type="text" class="form-control" name="skills[${hardSkillIndex}][namaSkill]" placeholder="Nama Skill" required></td>
             <td><input type="number" class="form-control" name="skills[${hardSkillIndex}][tingkatanSkill]" placeholder="Tingkat (%) (0-100)" required></td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm" onclick="hapusBaris(this)">Hapus</button>
+                <input type="hidden" name="skills[{{ $index }}][deleted]" value="false">
+            </td>
         `;
         document.getElementById('hardSkill').appendChild(newRow);
         hardSkillIndex++;
     });
+
+    function hapusBaris(button) {
+        var row = button.closest('tr');
+        row.querySelector('[name$="[deleted]"]').value = true;
+        row.style.display = 'none'; // Sembunyikan baris
+    }
 
 
 

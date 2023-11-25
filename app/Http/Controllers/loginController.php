@@ -26,14 +26,7 @@ class loginController extends Controller
 
         if (Auth::attempt($validateData)) {
             $request->session()->regenerate();
-
-            // Cek apakah email sudah diverifikasi
-            // if (auth()->user()->email_verified_at) {
-                return redirect()->intended('/aboutweb'); // atau halaman tujuan setelah login
-            // } else {
-            //     Auth::logout();
-            //     return redirect('/login')->with('loginError', 'Email Anda belum diverifikasi. Silakan periksa email Anda untuk verifikasi.');
-            // }
+                return redirect()->intended('/aboutweb');
         }
 
         return back()->with('loginError', 'Login gagal. Pastikan email dan password Anda benar.');

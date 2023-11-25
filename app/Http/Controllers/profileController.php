@@ -37,7 +37,14 @@ class profileController extends Controller
         $keahlian = Skill::where('profile_id', $profile->id)->get();
         $currentId = auth()->id();
 
-        return view('depan.about', ['data' => ['profile' => $profile, 'riwayatPekerjaan' => $riwayatPekerjaan, 'riwayatPendidikan' => $riwayatPendidikan,'keahlian' => $keahlian ]]);
+        return view('depan.about', [
+        'data' => [
+            'profile' => $profile, 
+            'riwayatPekerjaan' => $riwayatPekerjaan, 
+            'riwayatPendidikan' => $riwayatPendidikan,
+            'keahlian' => $keahlian,
+            'currentId' => $currentId 
+        ]]);
     }
 
 
@@ -210,6 +217,7 @@ class profileController extends Controller
             'skills.*.tingkatanSkill.between' => 'Tingkatan Keahlian harus antara 0 dan 100',
         ]);
 
+        // dd($request);
         $profile = profile::find($id);
         $profile->update([
             'nama' => $request->nama,
@@ -218,42 +226,75 @@ class profileController extends Controller
             'dataDiri' => $request->dataDiri,
         ]);
 
+        // dd($request->riwayatPekerjaan);
         foreach ($request->riwayatPekerjaan as $pekerjaan) {
-            RiwayatPekerjaan::updateOrCreate(
-                [
+            // Jika ID tidak ada atau null, buat entri baru
+            if (empty($pekerjaan['id'])) {
+                RiwayatPekerjaan::create([
                     'profile_id' => $profile->id,
                     'tgl_mulai' => $pekerjaan['tgl_mulai'],
                     'tgl_akhir' => $pekerjaan['tgl_akhir'],
                     'namaPerusahaan' => $pekerjaan['namaPerusahaan'],
                     'domisilPerusahaan' => $pekerjaan['domisilPerusahaan'],
                     'jabatan' => $pekerjaan['jabatan'],
-                ]
-            );
-        }
+                ]);
+            } else if ($pekerjaan['deleted'] == "true") {
+                RiwayatPekerjaan::where('id', $pekerjaan['id'])->delete();
+            } else {
+                // Jika ID ada, update entri yang ada
+                RiwayatPekerjaan::where('id', $pekerjaan['id'])->update([
+                    'tgl_mulai' => $pekerjaan['tgl_mulai'],
+                    'tgl_akhir' => $pekerjaan['tgl_akhir'],
+                    'namaPerusahaan' => $pekerjaan['namaPerusahaan'],
+                    'domisilPerusahaan' => $pekerjaan['domisilPerusahaan'],
+                    'jabatan' => $pekerjaan['jabatan'],
+                ]);
+            }
 
+        }
+        
         // Perbarui atau tambahkan riwayat pendidikan;
         foreach ($request->riwayatPendidikan as $pendidikan) {
-            RiwayatPendidikan::updateOrCreate(
-                [
+            // Jika ID tidak ada atau null, buat entri baru
+            if (empty($pendidikan['id'])) {
+                RiwayatPendidikan::create([
                     'profile_id' => $profile->id,
                     'thn_mulai' => $pendidikan['thn_mulai'],
                     'thn_akhir' => $pendidikan['thn_akhir'],
                     'namaSekolah' => $pendidikan['namaSekolah'],
-                ]
-            );
+                ]);
+            } else if ($pendidikan['deleted'] == "true") {
+                RiwayatPendidikan::where('id', $pendidikan['id'])->delete();
+            } else {
+                // Jika ID ada, update entri yang ada
+                RiwayatPendidikan::where('id', $pendidikan['id'])->update([
+                    'thn_mulai' => $pendidikan['thn_mulai'],
+                    'thn_akhir' => $pendidikan['thn_akhir'],
+                    'namaSekolah' => $pendidikan['namaSekolah'],
+                ]);
+            }
         }
 
         // Perbarui atau tambahkan skills
         foreach ($request->skills as $skill) {
-            Skill::updateOrCreate(
-                [
+            // Jika ID tidak ada atau null, buat entri baru
+            if (empty($skill['id'])) {
+                Skill::create([
                     'profile_id' => $profile->id,
                     'namaSkill' => $skill['namaSkill'],
                     'tingkatanSkill' => $skill['tingkatanSkill'],
-                ]
-            );
-        
+                ]);
+            } else if ($skill['deleted'] == "true") {
+                Skill::where('id', $skill['id'])->delete();
+            } else {
+                // Jika ID ada, update entri yang ada
+                Skill::where('id', $skill['id'])->update([
+                    'namaSkill' => $skill['namaSkill'],
+                    'tingkatanSkill' => $skill['tingkatanSkill'],
+                ]);
+            }
         }
+
         return redirect()->route('profile.cv', ['id' => $profile->id])->with('success', 'Data berhasil diperbarui.');
     }
 
