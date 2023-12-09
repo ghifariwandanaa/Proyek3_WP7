@@ -802,7 +802,7 @@ body {
     width: 100%;
     height: 20px; /* Sesuaikan tinggi bar sesuai kebutuhan Anda */
     background-color: #e0e0e0; /* Warna latar belakang bar */
-    margin-bottom: 10px; /* Jarak antara setiap bar */
+    margin-bottom: 2px; /* Jarak antara setiap bar */
     position: relative;
 }
 

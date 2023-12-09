@@ -35,6 +35,7 @@
               <img src="{{ asset('admin') }}/images/faces/OIP.jpg" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <p class="text-center">{{ auth()->user()->name }}</p>
               <form action="/logout" method="post">
                   @csrf
                   <button type="submit" class="dropdown-item"><i class="mdi mdi-logout text-danger"></i>
