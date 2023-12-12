@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\DepanController;
 use Illuminate\Http\Request;
 use App\Models\profile;
 use App\Models\RiwayatPekerjaan;
